@@ -219,9 +219,9 @@
         }
       </style>
 </head>
-<body class="bg-laboratory-white text-on-surface font-body-md antialiased pt-24 min-h-screen flex flex-col">
+<body class="bg-laboratory-white text-on-surface font-body-md antialiased min-h-screen flex flex-col">
 <!-- TopAppBar Component -->
-<header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+<header class="sticky top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
 <div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
 <a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
 <img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
@@ -256,7 +256,7 @@
 </div>
 <!-- Page Header -->
 <section class="relative pt-16 pb-20 px-8 overflow-hidden bg-medivan-pattern border-b border-neutral-ice">
-<div class="max-w-container-max mx-auto relative z-10 text-center reveal">
+<div class="max-w-container-max mx-auto relative z-10 text-center" data-anim="fade-up">
 <span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Our Scope of Analysis</span>
 <h1 class="font-headline-xl text-headline-xl text-cobalt-deep mb-6">Radiological Testing Services. <br/><span class="text-primary">Precision You Can Trust.</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">
@@ -268,7 +268,7 @@
 <main class="flex-grow w-full max-w-container-max mx-auto px-8 py-16">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 <!-- Food and Agriculture Section -->
-<div class="col-span-1 md:col-span-2 lg:col-span-2 reveal" id="food" style="transition-delay: 100ms;">
+<div class="col-span-1 md:col-span-2 lg:col-span-2" id="food" data-anim="fade-up" data-anim-delay="100">
 <div class="medivan-card flex flex-col">
 <div class="relative h-64 w-full bg-surface-container-high overflow-hidden">
 <img alt="Laboratory technician analyzing agricultural samples under clean room conditions." class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-90" src="assets/images/food_testing.png"/>
@@ -305,7 +305,7 @@
 </div>
 </div>
 <!-- Water Analysis Section -->
-<div class="col-span-1 md:col-span-2 lg:col-span-2 reveal" id="water" style="transition-delay: 200ms;">
+<div class="col-span-1 md:col-span-2 lg:col-span-2" id="water" data-anim="fade-up" data-anim-delay="200">
 <div class="medivan-card flex flex-col">
 <div class="relative h-64 w-full bg-surface-container-high overflow-hidden">
 <img alt="High-quality photograph of water quality testing in a modern laboratory" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-90" src="assets/images/water_quality.png"/>
@@ -352,7 +352,7 @@
 </div>
 </div>
 <!-- Environmental Section -->
-<div class="col-span-1 md:col-span-1 lg:col-span-2 reveal" id="environment" style="transition-delay: 300ms;">
+<div class="col-span-1 md:col-span-1 lg:col-span-2" id="environment" data-anim="fade-up" data-anim-delay="300">
 <div class="medivan-card flex flex-col">
 <div class="relative h-64 w-full bg-surface-container-high overflow-hidden">
 <img alt="High-quality photograph of environmental media testing" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-90" src="assets/images/environmental_testing.png"/>
@@ -394,7 +394,7 @@
 </div>
 </div>
 <!-- Industrial Section (New) -->
-<div class="col-span-1 md:col-span-1 lg:col-span-2 reveal" id="industrial" style="transition-delay: 400ms;">
+<div class="col-span-1 md:col-span-1 lg:col-span-2" id="industrial" data-anim="fade-up" data-anim-delay="400">
 <div class="medivan-card flex flex-col">
 <div class="relative h-64 w-full bg-surface-container-high overflow-hidden">
 <img alt="High-quality photograph of industrial materials testing in a laboratory" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-90" src="assets/images/industrial_testing.png"/>
@@ -439,7 +439,7 @@
 </main>
 <!-- Importance Section -->
 <section class="w-full bg-surface-container-lowest py-16 px-8 border-t border-gray-200">
-    <div class="max-w-[1280px] mx-auto reveal">
+    <div class="max-w-[1280px] mx-auto" data-anim="fade-up">
         <h2 class="font-headline-lg text-3xl text-cobalt-deep mb-8 text-center">Why Analysis &amp; Compliance Matter</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Chemical Analysis -->
@@ -485,7 +485,7 @@
     </div>
 </section>
 <!-- Action Banner -->
-<section class="w-full bg-primary py-12 px-8 reveal">
+<section class="w-full bg-primary py-12 px-8" data-anim="fade-up">
 <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-white text-5xl opacity-80">biotech</span>
