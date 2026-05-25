@@ -1,0 +1,164 @@
+/* ============================================================
+   AumNamah Lab — Premium Scroll Animation System
+   Used site-wide. Drive elements with [data-anim].
+   ------------------------------------------------------------
+   Usage:
+     <div data-anim="fade-up">...</div>
+     <div data-anim="slide-left" data-anim-delay="200">...</div>
+     <h2 data-anim="kinetic-words">Premium <span>Heading</span></h2>
+   ============================================================ */
+
+/* ---------- Base hidden state ---------- */
+[data-anim] {
+    opacity: 0;
+    will-change: opacity, transform, filter;
+    transition-property: opacity, transform, filter;
+    transition-duration: 900ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* easeOutExpo-ish */
+}
+
+/* ---------- Variants (initial transforms) ---------- */
+[data-anim="fade-up"]      { transform: translate3d(0, 48px, 0); }
+[data-anim="fade-down"]    { transform: translate3d(0, -48px, 0); }
+[data-anim="fade-in"]      { /* opacity only */ }
+[data-anim="slide-left"]   { transform: translate3d(-64px, 0, 0); }
+[data-anim="slide-right"]  { transform: translate3d(64px, 0, 0); }
+[data-anim="scale-in"]     { transform: scale(0.92); }
+[data-anim="blur-in"]      { filter: blur(14px); transform: translate3d(0, 24px, 0); }
+[data-anim="zoom-rotate"]  { transform: scale(0.85) rotate(-3deg); }
+[data-anim="reveal-mask"]  { clip-path: inset(0 100% 0 0); opacity: 1; }
+
+/* ---------- Active (in-view) state ---------- */
+[data-anim].is-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+}
+[data-anim="reveal-mask"].is-in { clip-path: inset(0 0 0 0); }
+
+/* ---------- Stagger (data-anim-delay) ---------- */
+[data-anim-delay="50"]   { transition-delay: 50ms; }
+[data-anim-delay="100"]  { transition-delay: 100ms; }
+[data-anim-delay="150"]  { transition-delay: 150ms; }
+[data-anim-delay="200"]  { transition-delay: 200ms; }
+[data-anim-delay="300"]  { transition-delay: 300ms; }
+[data-anim-delay="400"]  { transition-delay: 400ms; }
+[data-anim-delay="500"]  { transition-delay: 500ms; }
+[data-anim-delay="600"]  { transition-delay: 600ms; }
+[data-anim-delay="700"]  { transition-delay: 700ms; }
+[data-anim-delay="800"]  { transition-delay: 800ms; }
+[data-anim-delay="1000"] { transition-delay: 1000ms; }
+
+/* ---------- Speed ---------- */
+[data-anim-speed="fast"] { transition-duration: 600ms; }
+[data-anim-speed="slow"] { transition-duration: 1300ms; }
+
+/* ============================================================
+   Kinetic word reveal (for hero headlines)
+   Each child <span> rises with a subtle stagger.
+   ============================================================ */
+[data-anim="kinetic-words"] {
+    opacity: 1;
+    transform: none;
+}
+[data-anim="kinetic-words"] .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+[data-anim="kinetic-words"] .word > span {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-anim="kinetic-words"].is-in .word > span {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   Gradient sweep (animated underline / accent bar)
+   ============================================================ */
+.gradient-sweep {
+    position: relative;
+    background-image: linear-gradient(90deg, #004ac6 0%, #2563eb 50%, #00c4cc 100%);
+    background-size: 200% 100%;
+    animation: gradient-sweep 6s linear infinite;
+}
+@keyframes gradient-sweep {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* ============================================================
+   Floating glow orbs (premium hero ambience)
+   ============================================================ */
+.anim-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: float-orb 18s ease-in-out infinite alternate;
+}
+.anim-orb--blue   { background: radial-gradient(circle, rgba(0,74,198,0.55) 0%, rgba(37,99,235,0.0) 70%); }
+.anim-orb--cyan   { background: radial-gradient(circle, rgba(0,242,254,0.5) 0%,  rgba(6,182,212,0.0) 70%); }
+.anim-orb--violet { background: radial-gradient(circle, rgba(139,92,246,0.45) 0%, rgba(139,92,246,0.0) 70%); }
+
+@keyframes float-orb {
+    0%   { transform: translate3d(0,0,0) scale(1); }
+    50%  { transform: translate3d(40px,-50px,0) scale(1.15); }
+    100% { transform: translate3d(-30px,30px,0) scale(0.9); }
+}
+
+/* ============================================================
+   Animated counter wrapper (for stats)
+   ============================================================ */
+.count-up { font-variant-numeric: tabular-nums; }
+
+/* ============================================================
+   Scroll progress bar (top of viewport)
+   ============================================================ */
+.scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #004ac6, #00c4cc);
+    z-index: 9999;
+    transition: width 100ms linear;
+    box-shadow: 0 0 12px rgba(0, 196, 204, 0.6);
+}
+
+/* ============================================================
+   Subtle parallax (used via data-parallax="0.2" etc.)
+   The JS sets --p-y for translateY relative to scroll.
+   ============================================================ */
+[data-parallax] {
+    will-change: transform;
+    transform: translate3d(0, var(--p-y, 0), 0);
+}
+
+/* ============================================================
+   Magnetic hover (for primary CTAs)
+   ============================================================ */
+.magnetic {
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   Reduced motion — respect user preferences
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    [data-anim],
+    [data-anim] * ,
+    .anim-orb,
+    .gradient-sweep,
+    [data-parallax] {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
+        opacity: 1 !important;
+    }
+}

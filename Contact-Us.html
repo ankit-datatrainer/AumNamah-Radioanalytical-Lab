@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us - AumNamah Radioanalytical Laboratory</title>
+<link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="assets/favicons/site.webmanifest" />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/animations.css" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-on-surface": "#f0f0fb",
+                "tertiary-fixed": "#ffdbcd",
+                "outline": "#737686",
+                "safety-blue": "#3B82F6",
+                "error-container": "#ffdad6",
+                "on-surface-variant": "#434655",
+                "on-error": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "on-error-container": "#93000a",
+                "primary": "#004ac6",
+                "surface-container-high": "#e7e7f3",
+                "primary-container": "#2563eb",
+                "surface-container": "#ededf9",
+                "tertiary-container": "#bc4800",
+                "on-tertiary-fixed": "#360f00",
+                "surface-bright": "#faf8ff",
+                "on-tertiary-container": "#ffede6",
+                "primary-fixed-dim": "#b4c5ff",
+                "surface-container-low": "#f3f3fe",
+                "neutral-ice": "#E2E8F0",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "on-secondary-container": "#5c647a",
+                "cobalt-deep": "#1E3A8A",
+                "surface-variant": "#e1e2ed",
+                "secondary-container": "#dae2fd",
+                "primary-fixed": "#dbe1ff",
+                "on-secondary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "tertiary": "#943700",
+                "outline-variant": "#c3c6d7",
+                "on-primary-fixed": "#00174b",
+                "inverse-surface": "#2e3039",
+                "inverse-primary": "#b4c5ff",
+                "on-primary": "#ffffff",
+                "tertiary-fixed-dim": "#ffb596",
+                "secondary-fixed": "#dae2fd",
+                "surface-dim": "#d9d9e5",
+                "laboratory-white": "#F8FAFC",
+                "on-background": "#191b23",
+                "on-secondary-fixed-variant": "#3f465c",
+                "on-primary-fixed-variant": "#003ea8",
+                "surface-tint": "#0053db",
+                "on-primary-container": "#eeefff",
+                "error": "#ba1a1a",
+                "background": "#faf8ff",
+                "secondary": "#565e74",
+                "on-secondary-fixed": "#131b2e",
+                "on-surface": "#191b23",
+                "surface": "#faf8ff",
+                "surface-container-highest": "#e1e2ed",
+                "secondary-fixed-dim": "#bec6e0"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "section-padding": "120px",
+                "card-gap": "24px",
+                "unit": "8px",
+                "container-max": "1280px",
+                "gutter": "32px"
+        },
+        "fontFamily": {
+                "label-caps": [
+                        "JetBrains Mono"
+                ],
+                "headline-xl": [
+                        "Manrope"
+                ],
+                "technical-data": [
+                        "JetBrains Mono"
+                ],
+                "headline-md": [
+                        "Manrope"
+                ],
+                "headline-lg": [
+                        "Manrope"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Manrope"
+                ],
+                "body-lg": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-xl": [
+                        "64px",
+                        {
+                                "lineHeight": "72px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "technical-data": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+        }
+        .form-input-clean {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #E2E8F0;
+            border-radius: 0;
+            padding: 12px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #191b23;
+            transition: all 0.3s ease;
+        }
+        .form-input-clean:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom-color: #2563EB;
+        }
+        .form-input-clean::placeholder {
+            color: #737686;
+        }
+
+        /* Smooth Entrance Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        
+        
+        
+        
+    </style>
+</head>
+<body class="bg-laboratory-white text-on-surface font-body-md antialiased pt-24 min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+<div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
+<a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
+<img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="index.html">Home</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="About-Us.html">About Us</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Services.html">Services</a>
+<a class="font-body-md text-primary font-semibold border-b-2 border-primary pb-1 font-medium" href="Contact-Us.html">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center justify-center bg-white border border-primary text-primary px-6 py-2 rounded-full font-body-md hover:bg-primary-50 transition-colors mr-2">
+                    Client Login
+                </button>
+<a href="Contact-Us.html" class="hidden md:flex items-center justify-center bg-primary text-white px-6 py-2 rounded-full font-body-md hover:bg-cobalt-deep transition-colors flex items-center gap-2">
+                    Request Analysis <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-[80px]">
+<!-- Hero Section -->
+<section class="relative pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-lowest to-laboratory-white/50 z-10"></div>
+<img alt="Laboratory Background" class="w-full h-full object-cover opacity-10" data-alt="A macro shot of highly technical laboratory equipment, featuring polished steel, transparent glass vials, and subtle blue lighting in a pristine, sterile environment. The composition is structured and minimalistic, reflecting clinical precision." src="assets/images/about_us_lab.png"/>
+</div>
+<div class="max-w-[1280px] mx-auto px-8 relative z-20 text-center animate-" data-anim="fade-up">
+<p class="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase">GET IN TOUCH</p>
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-cobalt-deep mb-6">Connect with Our Experts</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Schedule an appointment, request analysis, or inquire about our comprehensive radioanalytical services. Our team of specialists is ready to assist you with precision and care.
+                </p>
+</div>
+</section>
+<!-- Main Content Area -->
+<section class="py-section-padding px-8 relative z-30 -mt-16">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Contact Information Column -->
+<div class="lg:col-span-5 flex flex-col gap-8">
+<!-- Info Card -->
+<div class="glass-panel rounded-2xl p-8 relative overflow-hidden group animate-" data-anim="fade-up" data-anim-delay="100">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+<h2 class="font-headline-md text-headline-md text-cobalt-deep mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                            Laboratory HQ
+                        </h2>
+<div class="space-y-6">
+<div>
+<h3 class="font-label-caps text-label-caps text-outline mb-2">Address</h3>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                                    CC-1, First Floor, Community Centre<br/>
+                                    Lawrence Road Industrial Area<br/>
+                                    Keshav Puram, New Delhi-110035
+                                </p>
+</div>
+<div class="h-px w-full bg-neutral-ice"></div>
+<div>
+<h3 class="font-label-caps text-label-caps text-outline mb-2">Contact Details</h3>
+<div class="space-y-3">
+<a class="flex items-center gap-3 text-body-md text-on-surface hover:text-primary transition-colors" href="tel:+918920723168">
+<span class="material-symbols-outlined text-secondary text-sm">call</span>
+                                        +91-8920723168
+                                    </a>
+<a class="flex items-center gap-3 text-body-md text-on-surface hover:text-primary transition-colors" href="tel:+919717686925">
+<span class="material-symbols-outlined text-secondary text-sm">phone_iphone</span>
+                                        +91-9717686925
+                                    </a>
+<a class="flex items-center gap-3 text-body-md text-on-surface hover:text-primary transition-colors" href="mailto:info@aumnamahral.com">
+<span class="material-symbols-outlined text-secondary text-sm">mail</span>
+                                        info@aumnamahral.com
+                                    </a>
+</div>
+</div>
+<div class="h-px w-full bg-neutral-ice"></div>
+<div>
+<h3 class="font-label-caps text-label-caps text-outline mb-2">Operating Hours</h3>
+<p class="font-technical-data text-technical-data text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+                                    Monday - Saturday: 09:00 - 18:00
+                                </p>
+</div>
+</div>
+</div>
+<!-- Compliance Card -->
+<div class="bg-surface-container-low rounded-2xl p-6 border border-neutral-ice/50 animate- shadow-sm" data-anim="fade-up" data-anim-delay="200">
+<div class="flex items-start gap-4">
+<div class="bg-white p-3 rounded-xl shadow-sm border border-neutral-ice text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-md text-lg font-semibold text-cobalt-deep mb-1">Corporate Compliance</h3>
+<p class="font-technical-data text-technical-data text-on-surface-variant">
+                                    GSTIN: <span class="text-on-surface font-semibold">07ACHFA5663Q1ZR</span>
+</p>
+<p class="font-body-md text-sm text-outline mt-2">
+                                    AERB Accredited Facility
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Form Column -->
+<div class="lg:col-span-7">
+<div class="glass-panel rounded-2xl p-8 lg:p-12 animate-" data-anim="fade-up" data-anim-delay="300">
+<div class="mb-8 border-b border-primary/10 pb-6">
+<h2 class="font-headline-md text-headline-md text-cobalt-deep mb-2">Book an Appointment</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Fill out the details below to schedule a consultation or drop-off.</p>
+</div>
+<form action="sendmail.php" method="POST" class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative group">
+<label class="font-label-caps text-label-caps text-cobalt-deep block mb-1 transition-colors group-focus-within:text-primary" for="name">Full Name</label>
+<input class="w-full form-input-clean" id="name" name="name" placeholder="Dr. Jane Doe" required="" type="text"/>
+</div>
+<div class="relative group">
+<label class="font-label-caps text-label-caps text-cobalt-deep block mb-1 transition-colors group-focus-within:text-primary" for="mobile">Mobile Number</label>
+<input class="w-full form-input-clean" id="mobile" name="mobile" placeholder="+91 XXXXX XXXXX" required="" type="tel"/>
+</div>
+</div>
+<div class="relative group">
+<label class="font-label-caps text-label-caps text-cobalt-deep block mb-1 transition-colors group-focus-within:text-primary" for="email">Email Address</label>
+<input class="w-full form-input-clean" id="email" name="email" placeholder="jane.doe@institution.com" required="" type="email"/>
+</div>
+<div class="relative group">
+<label class="font-label-caps text-label-caps text-cobalt-deep block mb-1 transition-colors group-focus-within:text-primary" for="service">Required Service</label>
+<select class="w-full form-input-clean appearance-none bg-transparent cursor-pointer" id="service" name="service">
+<option disabled="" selected="" value="">Select an analysis category...</option>
+<option value="water">Water &amp; Soil Radioanalysis</option>
+<option value="food">Food &amp; Agriculture Testing</option>
+<option value="building">Building Materials Assessment</option>
+<option value="pharma">Pharmaceutical Validation</option>
+<option value="other">Other / Consultation</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pt-6 pr-2 text-outline">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+<div class="relative group">
+<label class="font-label-caps text-label-caps text-cobalt-deep block mb-1 transition-colors group-focus-within:text-primary" for="message">Additional Details</label>
+<textarea class="w-full form-input-clean resize-none" id="message" name="message" placeholder="Please specify sample types, volume, or specific isotopes of interest..." rows="4"></textarea>
+</div>
+<div class="pt-6">
+<button class="w-full md:w-auto flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-full font-label-caps text-label-caps font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(37,99,235,0.3)] hover:bg-cobalt-deep" type="submit">
+<span>Submit Request</span>
+<span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="h-[400px] w-full bg-surface-container-high relative border-y border-outline-variant/30 animate-" data-anim="fade-up" data-anim-delay="400">
+<iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1663.5204071268333!2d77.1547330886592!3d28.682788443909306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d02490de8766d%3A0x6af5183b480b8bf5!2sLawrence%20Road%20Industrial%20Area%2C%20Keshav%20Puram%2C%20Tri%20Nagar%2C%20Delhi%2C%20110035!5e1!3m2!1sen!2sin!4v1744281820320!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-laboratory-white dark:bg-inverse-surface border-t border-outline-variant/50 w-full mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-[1280px] mx-auto px-8 py-16">
+<div class="md:col-span-1 flex flex-col gap-4">
+<a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
+<img alt="AumNamah Lab Logo" class="h-14 w-auto object-contain" src="assets/images/logo.png"/>
+</a>
+<p class="font-body-md text-sm text-on-surface-variant dark:text-outline-variant max-w-xs mt-2">
+                    Dedicated to delivering high-quality, precise radioanalytical testing that ensures environmental and public safety.
+                </p>
+</div>
+<div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-cobalt-deep mb-2 text-sm dark:text-primary-fixed-dim">Quick Links</h4>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="About-Us.html">About Us</a>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="Services.html">Services</a>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="Contact-Us.html">Contact</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-cobalt-deep mb-2 text-sm dark:text-primary-fixed-dim">Our Services</h4>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="Services.html#food">Food &amp; Agriculture</a>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="Services.html#water">Water Quality</a>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="Services.html#environment">Environmental</a>
+<a class="text-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="Services.html#industrial">Industrial</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-cobalt-deep mb-2 text-sm dark:text-primary-fixed-dim">Contact Us</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant"><strong>AumNamah Radioanalytical Lab</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area, Keshav Puram, New Delhi-110035</p>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant mt-2 flex items-center gap-2"><span class="material-symbols-outlined text-sm">call</span> <a class="hover:text-primary" href="tel:+918920723168">+91 8920723168</a>, <a class="hover:text-primary" href="tel:+919717686925">+91 9717686925</a></p>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> <a class="hover:text-primary" href="mailto:info@aumnamahral.com">info@aumnamahral.com</a></p>
+<div class="mt-4 p-3 bg-gray-50 dark:bg-surface-container rounded border border-gray-200 dark:border-outline-variant/30">
+    <p class="text-xs font-mono font-semibold text-cobalt-deep dark:text-on-surface"><span class="text-primary mr-1">GSTIN:</span> 07ACHFA5663Q1ZR</p>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-on-surface-variant">© 2026 AumNamah Radioanalytical Laboratory. All Rights Reserved.</p>
+<div class="flex gap-6 text-xs">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms &amp; Conditions</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Floating Action Buttons -->
+<style>
+.floating-stack {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    pointer-events: none;
+}
+.floating-stack > * { pointer-events: auto; }
+
+/* ---------- Premium WhatsApp pill ---------- */
+.fab-whatsapp {
+    --wa-green: #25D366;
+    --wa-green-dark: #128C7E;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 22px 0 64px;
+    background: linear-gradient(135deg, var(--wa-green) 0%, var(--wa-green-dark) 100%);
+    color: #fff;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.35), 0 2px 8px rgba(0,0,0,0.08);
+    border: 2px solid rgba(255,255,255,0.45);
+    max-width: 60px;
+    overflow: hidden;
+    transition: max-width 450ms cubic-bezier(.22,1,.36,1), box-shadow 300ms ease, transform 300ms ease;
+    white-space: nowrap;
+}
+.fab-whatsapp:hover,
+.fab-whatsapp:focus-visible {
+    max-width: 300px;
+    box-shadow: 0 14px 36px rgba(37, 211, 102, 0.5), 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+    outline: none;
+}
+.fab-whatsapp__icon {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wa-green);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+}
+.fab-whatsapp__icon svg { width: 26px; height: 26px; fill: currentColor; }
+
+/* Online status dot with pulse */
+.fab-whatsapp__icon::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid #ffffff;
+    animation: fab-pulse-dot 2.4s infinite;
+}
+@keyframes fab-pulse-dot {
+    0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+/* Outer halo ring (subtle, only when collapsed) */
+.fab-whatsapp::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    border: 2px solid var(--wa-green);
+    opacity: 0;
+    animation: fab-halo 3s infinite;
+    pointer-events: none;
+}
+@keyframes fab-halo {
+    0%   { opacity: 0.55; transform: scale(0.92); }
+    70%  { opacity: 0;    transform: scale(1.15); }
+    100% { opacity: 0;    transform: scale(1.15); }
+}
+.fab-whatsapp:hover::before { animation: none; opacity: 0; }
+
+/* Label text (revealed on hover) */
+.fab-whatsapp__label {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.15;
+    transform: translateX(10px);
+    opacity: 0;
+    transition: transform 380ms cubic-bezier(.22,1,.36,1) 80ms, opacity 260ms ease 120ms;
+}
+.fab-whatsapp:hover .fab-whatsapp__label,
+.fab-whatsapp:focus-visible .fab-whatsapp__label {
+    transform: translateX(0);
+    opacity: 1;
+}
+.fab-whatsapp__title { font-size: 14px; font-weight: 700; }
+.fab-whatsapp__sub { font-size: 11px; opacity: 0.9; font-weight: 500; margin-top: 2px; }
+
+/* ---------- Minimal Back-to-top ---------- */
+.fab-top {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #004ac6;
+    border: 1px solid rgba(0, 74, 198, 0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 280ms ease, transform 280ms ease, box-shadow 280ms ease, background 200ms ease, color 200ms ease;
+}
+.fab-top.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.fab-top:hover,
+.fab-top:focus-visible {
+    background: #004ac6;
+    color: #ffffff;
+    box-shadow: 0 12px 26px rgba(0, 74, 198, 0.32);
+    transform: translateY(-2px);
+    outline: none;
+}
+.fab-top svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.fab-top::after {
+    content: 'Back to top';
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    background: #1E3A8A;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+.fab-top:hover::after,
+.fab-top:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+    .floating-stack { right: 16px; bottom: 16px; gap: 12px; }
+    .fab-whatsapp { height: 54px; padding-left: 58px; padding-right: 18px; max-width: 54px; }
+    .fab-whatsapp__icon { width: 44px; height: 44px; left: 3px; top: 3px; }
+    .fab-whatsapp__icon svg { width: 22px; height: 22px; }
+    .fab-whatsapp:hover { max-width: 260px; }
+    .fab-whatsapp__title { font-size: 13px; }
+    .fab-whatsapp__sub { font-size: 10px; }
+    .fab-top { width: 44px; height: 44px; }
+    .fab-top svg { width: 18px; height: 18px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .fab-whatsapp, .fab-top, .fab-whatsapp__label,
+    .fab-whatsapp::before, .fab-whatsapp__icon::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+
+<div class="floating-stack" aria-label="Quick actions">
+    <a href="https://wa.me/918920723168" target="_blank" rel="noopener" class="fab-whatsapp" aria-label="Chat with us on WhatsApp">
+        <span class="fab-whatsapp__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </span>
+        <span class="fab-whatsapp__label">
+            <span class="fab-whatsapp__title">Chat with us</span>
+            <span class="fab-whatsapp__sub">Typically replies in minutes</span>
+        </span>
+    </a>
+    <button type="button" class="fab-top" id="scrollTopBtn" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+</div>
+
+<script>
+(function () {
+    var btn = document.getElementById('scrollTopBtn');
+    if (!btn) return;
+    var onScroll = function () {
+        if (window.scrollY > 300) btn.classList.add('is-visible');
+        else btn.classList.remove('is-visible');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    onScroll();
+})();
+</script>
+<!-- End Floating Action Buttons -->
+
+<script src="assets/js/animations.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AumNamah Radioanalytical Lab</title>
+<link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="assets/favicons/site.webmanifest" />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Manrope:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/animations.css" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Tech Grid Background */
+        .tech-grid {
+            background-image: 
+                radial-gradient(rgba(0, 74, 198, 0.04) 1.5px, transparent 1.5px),
+                linear-gradient(rgba(0, 74, 198, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 74, 198, 0.015) 1px, transparent 1px);
+            background-size: 24px 24px, 72px 72px, 72px 72px;
+            background-position: center;
+        }
+
+        /* Glowing Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            animation: float-glow 15s infinite alternate ease-in-out;
+        }
+        
+        .glow-orb-primary {
+            background: radial-gradient(circle, rgba(0, 74, 198, 0.4) 0%, rgba(37, 99, 235, 0.1) 70%, transparent 100%);
+        }
+        .glow-orb-secondary {
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, rgba(6, 182, 212, 0.1) 70%, transparent 100%);
+        }
+
+        @keyframes float-glow {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -60px) scale(1.2); }
+            100% { transform: translate(-20px, 30px) scale(0.9); }
+        }
+
+        /* Scanline Animation for HUD */
+        @keyframes scanline {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(300px); }
+        }
+        .hud-scanline {
+            animation: scanline 6s infinite linear;
+        }
+
+        /* Concentric Ring Spin */
+        @keyframes spin-clockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes spin-counter {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .hud-spin-cw {
+            transform-origin: 200px 200px;
+            animation: spin-clockwise 25s infinite linear;
+        }
+        .hud-spin-ccw {
+            transform-origin: 200px 200px;
+            animation: spin-counter 15s infinite linear;
+        }
+        
+        /* Pulse core */
+        @keyframes pulse-core {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .hud-core {
+            transform-origin: 200px 200px;
+            animation: pulse-core 4s infinite ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary": "#565e74",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-secondary-container": "#5c647a",
+                        "on-tertiary-container": "#ffede6",
+                        "on-primary-container": "#eeefff",
+                        "cobalt-deep": "#1E3A8A",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "laboratory-white": "#F8FAFC",
+                        "surface-variant": "#e1e2ed",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container": "#ededf9",
+                        "on-background": "#191b23",
+                        "secondary-container": "#dae2fd",
+                        "tertiary": "#943700",
+                        "tertiary-container": "#bc4800",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-highest": "#e1e2ed",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3039",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container-high": "#e7e7f3",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-error-container": "#93000a",
+                        "neutral-ice": "#E2E8F0",
+                        "primary": "#004ac6",
+                        "outline": "#737686",
+                        "surface-dim": "#d9d9e5",
+                        "surface-container-low": "#f3f3fe",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-surface": "#191b23",
+                        "tertiary-fixed": "#ffdbcd",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#faf8ff",
+                        "safety-blue": "#3B82F6",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "background": "#faf8ff",
+                        "secondary-fixed": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "section-padding": "120px",
+                        "gutter": "32px",
+                        "card-gap": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "technical-data": ["JetBrains Mono"],
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "technical-data": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-xl": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Top Bar -->
+<div class="bg-cobalt-deep text-white py-2 hidden md:block">
+<div class="max-w-[1280px] mx-auto px-8 flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-medium">Committed to Clinical Precision. Driven by Innovation.</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>Quality You Can Trust</span>
+</div>
+<div class="flex items-center gap-2 border-l border-white/20 pl-6">
+<span class="material-symbols-outlined text-[16px]">health_and_safety</span>
+<span>ISO Compliant Lab</span>
+</div>
+</div>
+</div>
+</div>
+<!-- TopAppBar Component -->
+<header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+<div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
+<a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
+<img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-primary font-semibold border-b-2 border-primary pb-1 font-medium" href="index.html">Home</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="About-Us.html">About Us</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Services.html">Services</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Contact-Us.html">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center justify-center bg-white border border-primary text-primary px-6 py-2 rounded-full font-body-md hover:bg-primary-50 transition-colors mr-2">
+                    Client Login
+                </button>
+<a href="Contact-Us.html" class="hidden md:flex items-center justify-center bg-primary text-white px-6 py-2 rounded-full font-body-md hover:bg-cobalt-deep transition-colors flex items-center gap-2">
+                    Request Analysis <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-[80px]">
+<!-- ============================================================
+     HERO SECTION — Premium kinetic reveal
+     ============================================================ -->
+<section class="relative min-h-[92vh] flex items-center pt-24 pb-20 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-white to-white tech-grid">
+    <!-- Floating ambience orbs -->
+    <div class="anim-orb anim-orb--blue   w-[520px] h-[520px] -top-44 -left-44"></div>
+    <div class="anim-orb anim-orb--cyan   w-[420px] h-[420px] top-60 -right-24" style="animation-delay:-6s;"></div>
+    <div class="anim-orb anim-orb--violet w-[300px] h-[300px] bottom-0 left-1/3" style="animation-delay:-12s; opacity:.35;"></div>
+
+    <div class="max-w-[1280px] mx-auto px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- ===== LEFT COLUMN ===== -->
+        <div class="lg:col-span-6 flex flex-col justify-center">
+            <!-- Eyebrow badge -->
+            <div data-anim="fade-up" class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 text-primary text-xs font-semibold tracking-widest w-fit mb-6 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                CLINICAL PRECISION &bull; ISO ACCREDITED
+            </div>
+
+            <!-- Kinetic word headline -->
+            <h1 data-anim="kinetic-words" class="font-headline-xl text-5xl lg:text-[64px] text-cobalt-deep mb-6 leading-[1.05] font-extrabold tracking-tight">
+                Advanced Analysis. <span class="bg-gradient-to-r from-primary via-[#2563eb] to-[#00c4cc] bg-clip-text text-transparent">Trusted Results.</span>
+            </h1>
+
+            <!-- Animated underline accent -->
+            <div data-anim="reveal-mask" data-anim-delay="600" class="h-[3px] w-24 mb-8 gradient-sweep rounded-full"></div>
+
+            <!-- Description -->
+            <p data-anim="fade-up" data-anim-delay="200" class="font-body-lg text-lg text-on-surface-variant mb-10 max-w-xl leading-relaxed">
+                AumNamah Radioanalytical Lab delivers precise, reliable, and compliant radiochemical and radiation analysis. We safeguard industries, support cutting-edge research, and protect global healthcare standards.
+            </p>
+
+            <!-- CTAs -->
+            <div data-anim="fade-up" data-anim-delay="300" class="flex flex-wrap gap-4 mb-10">
+                <a class="magnetic bg-primary text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 group" href="#services">
+                    Our Services
+                    <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+                <a class="bg-white text-on-surface-variant border border-outline-variant/60 font-semibold px-8 py-4 rounded-full hover:text-primary hover:border-primary hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2" href="About-Us.html">
+                    About Us
+                    <span class="material-symbols-outlined text-[20px]">info</span>
+                </a>
+            </div>
+
+            <!-- Trust chip with live counter -->
+            <div data-anim="fade-up" data-anim-delay="500" class="flex items-center gap-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-outline-variant/30 shadow-md w-fit">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-xl">verified_user</span>
+                </div>
+                <div>
+                    <p class="font-semibold text-cobalt-deep text-sm">
+                        <span class="count-up" data-count-to="99.9" data-count-decimals="1" data-count-suffix="%">0%</span>
+                        Precision Certified
+                    </p>
+                    <p class="text-xs text-on-surface-variant">Triple-tier diagnostic safety validation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== RIGHT COLUMN — HUD Visualizer ===== -->
+        <div data-anim="scale-in" data-anim-delay="200" data-parallax="0.08" class="lg:col-span-6 flex justify-center items-center relative mt-10 lg:mt-0">
+            <div class="absolute w-[460px] h-[460px] rounded-full border border-primary/5 animate-pulse"></div>
+
+            <div class="relative w-full max-w-[440px] aspect-square bg-white/40 backdrop-blur-md rounded-3xl border border-white/60 shadow-[0_20px_50px_rgba(0,0,0,0.08)] p-6 flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="200" r="180" stroke="rgba(0, 74, 198, 0.05)" stroke-width="1.5"/>
+                    <circle cx="200" cy="200" r="150" stroke="rgba(0, 74, 198, 0.03)" stroke-width="1" stroke-dasharray="5 5"/>
+
+                    <g class="hud-spin-cw">
+                        <circle cx="200" cy="200" r="120" stroke="#1E3A8A" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="40 20 10 40"/>
+                        <circle cx="200" cy="200" r="128" stroke="#00f2fe" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="5 15"/>
+                    </g>
+
+                    <g class="hud-spin-ccw">
+                        <circle cx="200" cy="200" r="90" stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="60 40"/>
+                        <circle cx="200" cy="200" r="80" stroke="rgba(0, 74, 198, 0.08)" stroke-width="1"/>
+                    </g>
+
+                    <g class="hud-core">
+                        <circle cx="200" cy="200" r="45" fill="url(#coreGradient)" filter="drop-shadow(0 0 15px rgba(0, 74, 198, 0.35))"/>
+                        <circle cx="200" cy="200" r="20" fill="#FFF"/>
+                        <path d="M192 200 L208 200 M200 192 L200 208" stroke="#1E3A8A" stroke-width="2"/>
+                    </g>
+
+                    <g class="hud-scanline">
+                        <line x1="40" y1="0" x2="360" y2="0" stroke="rgba(0, 242, 254, 0.8)" stroke-width="2" stroke-linecap="round" filter="drop-shadow(0 0 8px rgba(0, 242, 254, 0.8))"/>
+                        <path d="M40 0 L50 10 M360 0 L350 10" stroke="rgba(0, 242, 254, 0.4)" stroke-width="1"/>
+                    </g>
+
+                    <path d="M50 180 L50 150 L80 150" stroke="rgba(0, 74, 198, 0.25)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M350 180 L350 150 L320 150" stroke="rgba(0, 74, 198, 0.25)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M50 220 L50 250 L80 250" stroke="rgba(0, 74, 198, 0.25)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M350 220 L350 250 L320 250" stroke="rgba(0, 74, 198, 0.25)" stroke-width="2" stroke-linecap="round"/>
+
+                    <g transform="translate(90, 100)" class="animate-bounce" style="animation-duration: 4s;">
+                        <circle cx="0" cy="0" r="4" fill="#00f2fe"/>
+                        <line x1="0" y1="0" x2="20" y2="-20" stroke="rgba(0, 74, 198, 0.2)" stroke-width="1"/>
+                        <text x="25" y="-18" fill="#1E3A8A" font-family="monospace" font-size="9" font-weight="bold">ALPHA LOCK</text>
+                    </g>
+
+                    <g transform="translate(300, 290)" class="animate-bounce" style="animation-duration: 5s;">
+                        <circle cx="0" cy="0" r="4" fill="#3B82F6"/>
+                        <line x1="0" y1="0" x2="-20" y2="20" stroke="rgba(0, 74, 198, 0.2)" stroke-width="1"/>
+                        <text x="-95" y="24" fill="#1E3A8A" font-family="monospace" font-size="9" font-weight="bold">BETA OK [99.9%]</text>
+                    </g>
+
+                    <defs>
+                        <radialGradient id="coreGradient" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#00f2fe"/>
+                            <stop offset="60%" stop-color="#004ac6"/>
+                            <stop offset="100%" stop-color="#1E3A8A"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+
+                <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 text-white rounded-xl p-3 border border-white/10 flex justify-between items-center text-[10px] font-mono shadow-lg">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>SYSTEM: ONLINE</span>
+                    </div>
+                    <div>SCANNING WATER/FOOD...</div>
+                    <div class="text-cyan-400">FPS: 60.0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div data-anim="fade-in" data-anim-delay="1000" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface-variant/60 font-mono text-[10px] tracking-widest">
+        <span>SCROLL</span>
+        <span class="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent animate-pulse"></span>
+    </div>
+</section>
+
+<!-- Trust Signals Section -->
+<section class="py-16 bg-white relative z-10 max-w-[1280px] mx-auto px-8">
+    <div class="bg-[#F8FAFC] rounded-3xl border border-outline-variant/30 shadow-[0_15px_40px_rgba(0,0,0,0.02)] p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div data-anim="scale-in" data-anim-delay="100" class="flex flex-col items-center text-center p-8 bg-white rounded-2xl hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group border border-outline-variant/10">
+            <div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 border border-primary/10">
+                <span class="material-symbols-outlined text-2xl">precision_manufacturing</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] text-cobalt-deep mb-2 font-bold">Quality First</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Strict compliance to global standards for authentic results.</p>
+        </div>
+        <div data-anim="scale-in" data-anim-delay="200" class="flex flex-col items-center text-center p-8 bg-white rounded-2xl hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group border border-outline-variant/10">
+            <div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 border border-primary/10">
+                <span class="material-symbols-outlined text-2xl">biotech</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] text-cobalt-deep mb-2 font-bold">Innovation Driven</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed">State-of-the-art instrumentation for low detection limits.</p>
+        </div>
+        <div data-anim="scale-in" data-anim-delay="300" class="flex flex-col items-center text-center p-8 bg-white rounded-2xl hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group border border-outline-variant/10">
+            <div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 border border-primary/10">
+                <span class="material-symbols-outlined text-2xl">public</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] text-cobalt-deep mb-2 font-bold">Global Standards</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Delivering trusted regulatory analysis worldwide.</p>
+        </div>
+        <div data-anim="scale-in" data-anim-delay="400" class="flex flex-col items-center text-center p-8 bg-white rounded-2xl hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group border border-outline-variant/10">
+            <div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 border border-primary/10">
+                <span class="material-symbols-outlined text-2xl">health_and_safety</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] text-cobalt-deep mb-2 font-bold">Safety Focus</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Our mission is to enhance safety through accurate testing.</p>
+        </div>
+    </div>
+</section>
+<!-- Services Bento Grid -->
+<section class="py-20 bg-laboratory-white relative overflow-hidden" id="services">
+<!-- Subtle background pattern -->
+<div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30"></div>
+<div class="max-w-[1280px] mx-auto px-8 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6" data-anim="fade-up">
+<div>
+<p class="text-primary font-bold tracking-wider text-sm mb-3 uppercase">Our Services</p>
+<h2 class="font-headline-lg text-headline-lg text-cobalt-deep max-w-2xl leading-tight">
+                            Radiological Testing for a Safer Tomorrow
+                        </h2>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-semibold hover:text-cobalt-deep transition-colors group" href="Services.html">
+                        View All Services <span class="material-symbols-outlined transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Food and Agriculture -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgb(37,99,235,0.1)] transition-all duration-300 group flex flex-col" data-anim="fade-up" data-anim-delay="100">
+<div class="h-48 overflow-hidden relative">
+<img alt="Food and agriculture testing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/images/food_testing.png"/>
+<div class="absolute inset-0 bg-cobalt-deep/10 group-hover:bg-transparent transition-colors duration-300"></div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<h3 class="font-headline-md text-[22px] text-cobalt-deep mb-3">Food and Agriculture</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex-grow">Crops, marine foods, meat, milk, poultry and agricultural products testing.</p>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 self-start" href="Services.html#food">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Water -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgb(37,99,235,0.1)] transition-all duration-300 group flex flex-col" data-anim="fade-up" data-anim-delay="200">
+<div class="h-48 overflow-hidden relative">
+<img alt="Water testing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/images/water_quality.png"/>
+<div class="absolute inset-0 bg-cobalt-deep/10 group-hover:bg-transparent transition-colors duration-300"></div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<h3 class="font-headline-md text-[22px] text-cobalt-deep mb-3">Water Samples</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex-grow">Potable water, borewell, well, effluent, and all other liquid samples.</p>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 self-start" href="Services.html#water">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Environment & NORM -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgb(37,99,235,0.1)] transition-all duration-300 group flex flex-col" data-anim="fade-up" data-anim-delay="300">
+<div class="h-48 overflow-hidden relative">
+<img alt="Environment testing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/images/environmental_testing.png"/>
+<div class="absolute inset-0 bg-cobalt-deep/10 group-hover:bg-transparent transition-colors duration-300"></div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<h3 class="font-headline-md text-[22px] text-cobalt-deep mb-3">Environment &amp; NORM</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex-grow">Soil, ash, ore, and other environmental NORM and fallout samples.</p>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 self-start" href="Services.html#environment">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Industrial -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgb(37,99,235,0.1)] transition-all duration-300 group flex flex-col" data-anim="fade-up" data-anim-delay="400">
+<div class="h-48 overflow-hidden relative">
+<img alt="Industrial testing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/images/industrial_testing.png"/>
+<div class="absolute inset-0 bg-cobalt-deep/10 group-hover:bg-transparent transition-colors duration-300"></div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<h3 class="font-headline-md text-[22px] text-cobalt-deep mb-3">Industrial Samples</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex-grow">All effluents (solid, liquid, gaseous), tissue papers and industrial materials.</p>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 self-start" href="Services.html#industrial">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Scope of Analysis -->
+<section class="py-20 bg-white relative">
+<div class="max-w-[1280px] mx-auto px-8 relative z-10">
+<div class="text-center mb-16" data-anim="fade-up">
+<p class="text-primary font-bold tracking-wider text-sm mb-3 uppercase">Comprehensive Testing</p>
+<h2 class="font-headline-lg text-headline-lg text-cobalt-deep">Our Analytical Scope</h2>
+<p class="text-on-surface-variant max-w-3xl mx-auto mt-4">We specialize in accurate, reliable, and compliant radiochemical and radiation analysis to support industries, research institutions, healthcare, environmental monitoring, and regulatory bodies.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Food & Agriculture Scope -->
+    <div class="bg-laboratory-white rounded-2xl p-8 border border-outline-variant/30" data-anim="fade-up" data-anim-delay="100">
+        <h3 class="font-headline-md text-xl text-cobalt-deep mb-4 border-b border-outline-variant/30 pb-4">Gamma Emitting Radionuclide in Food & Agriculture</h3>
+        <p class="text-primary font-bold text-sm mb-4 font-mono">Cs-134, Cs-137, Co-60, K-40 &amp; Gross Beta</p>
+        <ul class="space-y-3 text-sm text-on-surface-variant">
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> <span><strong>Bakery &amp; Confectionary:</strong> Breads &amp; Rolls, Cakes, Biscuits</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> <span><strong>Crops Produce:</strong> Cereals, Millets, Pulses, Oil Seeds, Roots</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> <span><strong>Marine Foods:</strong> Fresh Water Fishes, Crustaceans, Seaweeds</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> <span><strong>Meat &amp; Poultry:</strong> Red Meats, Processed Meats, Eggs</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> <span><strong>Dairy:</strong> Milk, Milk Powders, Cheese, Frozen Desserts</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> <span><strong>Spices:</strong> Whole &amp; Ground Spices, Condiments, Additives</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> <span><strong>Other:</strong> API, Cosmetics, Honey, Oils, Beverages, Tea</span></li>
+        </ul>
+    </div>
+
+    <!-- Environment & NORM Scope -->
+    <div class="bg-laboratory-white rounded-2xl p-8 border border-outline-variant/30" data-anim="fade-up" data-anim-delay="200">
+        <h3 class="font-headline-md text-xl text-cobalt-deep mb-4 border-b border-outline-variant/30 pb-4">Gamma Emitting Radionuclide (NORM) in Environment</h3>
+        
+        <div class="mb-5">
+            <p class="text-primary font-bold text-sm mb-2 font-mono">Ra-226, Th-232, U-238 &amp; Gross Beta</p>
+            <ul class="space-y-2 text-sm text-on-surface-variant pl-4 border-l-2 border-primary/20">
+                <li><strong>Liquid Effluents:</strong> Laboratory, Medical, Industrial, Municipal</li>
+            </ul>
+        </div>
+        
+        <div class="mb-5">
+            <p class="text-primary font-bold text-sm mb-2 font-mono">Ra-226, Th-232, U-238 &amp; K-40</p>
+            <ul class="space-y-2 text-sm text-on-surface-variant pl-4 border-l-2 border-primary/20">
+                <li><strong>Ores &amp; Metals:</strong> Heavy Mineral Sands, Bauxite, Coal, Slags</li>
+            </ul>
+        </div>
+        
+        <div>
+            <p class="text-primary font-bold text-sm mb-2 font-mono">Cs-134, Cs-137, Co-60, Ra-226, Th-232, U-238, K-40 &amp; Gross Beta</p>
+            <ul class="space-y-2 text-sm text-on-surface-variant pl-4 border-l-2 border-primary/20">
+                <li><strong>Soil &amp; Biota:</strong> Soils, Sediments, Vegetation, Biota</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Water Scope -->
+    <div class="bg-laboratory-white rounded-2xl p-8 border border-outline-variant/30" data-anim="fade-up" data-anim-delay="300">
+        <h3 class="font-headline-md text-xl text-cobalt-deep mb-4 border-b border-outline-variant/30 pb-4">Gamma Emitting Radionuclide in Water</h3>
+        <p class="text-primary font-bold text-sm mb-4 font-mono">Gross Alpha, Gross Beta &amp; Uranium Concentration</p>
+        <ul class="space-y-3 text-sm text-on-surface-variant">
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">water_drop</span> <span><strong>Drinking Water:</strong> Packaged, Treated, Potable, Natural Mineral</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">water_drop</span> <span><strong>Industrial Water:</strong> Process Water, Rinse Water, Waste Water</span></li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">water_drop</span> <span><strong>Source Water:</strong> Construction Water, Borewell Water, Raw Water</span></li>
+        </ul>
+        
+        <div class="mt-8 bg-cobalt-deep text-white rounded-xl p-6">
+            <h4 class="font-bold mb-2 flex items-center gap-2"><span class="material-symbols-outlined">verified</span> Why Choose Us?</h4>
+            <ul class="space-y-2 text-sm text-white/80 list-disc pl-4">
+                <li>State-of-the-art instrumentation</li>
+                <li>High accuracy &amp; low detection limits</li>
+                <li>Experienced radiation scientists</li>
+                <li>Strict safety &amp; quality protocols</li>
+                <li>National &amp; international standards compliant</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+<!-- State-of-the-Art Instrumentation -->
+<section class="py-20 bg-laboratory-white relative overflow-hidden">
+<div class="max-w-[1280px] mx-auto px-8 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6" data-anim="fade-up">
+<div>
+<p class="text-primary font-bold tracking-wider text-sm mb-3 uppercase">Technology</p>
+<h2 class="font-headline-lg text-headline-lg text-cobalt-deep max-w-2xl leading-tight">State-of-the-Art Instrumentation</h2>
+<p class="text-on-surface-variant max-w-3xl mt-4">We are equipped with advanced testing technologies to deliver the highest level of accuracy in measurement.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white rounded-xl p-6 shadow-sm border border-outline-variant/20 hover:border-primary/50 transition-colors" data-anim="fade-up" data-anim-delay="100">
+        <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">science</span>
+        </div>
+        <h3 class="font-headline-md text-lg text-cobalt-deep mb-2">Alpha Scintillation Counting System</h3>
+        <p class="text-sm text-on-surface-variant">High-precision detection of alpha-emitting radionuclides in environmental and biological samples.</p>
+    </div>
+    <div class="bg-white rounded-xl p-6 shadow-sm border border-outline-variant/20 hover:border-primary/50 transition-colors" data-anim="fade-up" data-anim-delay="200">
+        <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">biotech</span>
+        </div>
+        <h3 class="font-headline-md text-lg text-cobalt-deep mb-2">Low Beta Counting System</h3>
+        <p class="text-sm text-on-surface-variant">Sensitive measurement of low-level beta activity essential for compliance and environmental monitoring.</p>
+    </div>
+    <div class="bg-white rounded-xl p-6 shadow-sm border border-outline-variant/20 hover:border-primary/50 transition-colors" data-anim="fade-up" data-anim-delay="300">
+        <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">graphic_eq</span>
+        </div>
+        <h3 class="font-headline-md text-lg text-cobalt-deep mb-2">Gamma Spectrometry System</h3>
+        <p class="text-sm text-on-surface-variant">Qualitative and quantitative analysis of gamma-emitting isotopes across various sample matrices.</p>
+    </div>
+    <div class="bg-white rounded-xl p-6 shadow-sm border border-outline-variant/20 hover:border-primary/50 transition-colors" data-anim="fade-up" data-anim-delay="400">
+        <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">radar</span>
+        </div>
+        <h3 class="font-headline-md text-lg text-cobalt-deep mb-2">Contamination Monitor</h3>
+        <p class="text-sm text-on-surface-variant">Alpha, Beta, Gamma and soft X-rays exposure survey meter for comprehensive safety verification.</p>
+    </div>
+    <div class="bg-white rounded-xl p-6 shadow-sm border border-outline-variant/20 hover:border-primary/50 transition-colors" data-anim="fade-up" data-anim-delay="500">
+        <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">highlight</span>
+        </div>
+        <h3 class="font-headline-md text-lg text-cobalt-deep mb-2">LED Fluorimeter</h3>
+        <p class="text-sm text-on-surface-variant">Advanced optical instrument for precise trace-level analysis, specifically tuned for uranium concentration measurement.</p>
+    </div>
+</div>
+</div>
+</section>
+<!-- Stats Bar -->
+<section class="bg-primary text-white py-16 mt-20 relative overflow-hidden">
+<div class="anim-orb anim-orb--cyan w-[400px] h-[400px] -top-32 -right-20 opacity-20"></div>
+<div class="max-w-[1280px] mx-auto px-8 relative z-10">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/20">
+<div class="text-center px-4" data-anim="zoom-rotate">
+<div class="flex justify-center mb-4">
+<span class="material-symbols-outlined text-4xl opacity-80">apartment</span>
+</div>
+<h4 class="text-4xl font-bold mb-2">ISO</h4>
+<p class="text-sm text-primary-fixed opacity-90">Certified Laboratory</p>
+</div>
+<div class="text-center px-4" data-anim="zoom-rotate" data-anim-delay="100">
+<div class="flex justify-center mb-4">
+<span class="material-symbols-outlined text-4xl opacity-80">science</span>
+</div>
+<h4 class="text-4xl font-bold mb-2"><span class="count-up" data-count-to="100" data-count-suffix="+">0+</span></h4>
+<p class="text-sm text-primary-fixed opacity-90">Testing Parameters</p>
+</div>
+<div class="text-center px-4" data-anim="zoom-rotate" data-anim-delay="200">
+<div class="flex justify-center mb-4">
+<span class="material-symbols-outlined text-4xl opacity-80">groups</span>
+</div>
+<h4 class="text-4xl font-bold mb-2"><span class="count-up" data-count-to="500" data-count-suffix="+">0+</span></h4>
+<p class="text-sm text-primary-fixed opacity-90">Happy Clients</p>
+</div>
+<div class="text-center px-4" data-anim="zoom-rotate" data-anim-delay="300">
+<div class="flex justify-center mb-4">
+<span class="material-symbols-outlined text-4xl opacity-80">verified</span>
+</div>
+<h4 class="text-4xl font-bold mb-2"><span class="count-up" data-count-to="20" data-count-suffix="+">0+</span></h4>
+<p class="text-sm text-primary-fixed opacity-90">Years Experience</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-cobalt-deep text-white py-12 relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djI2aDJWMzRoLzJ6bS0xMC0ydjI2aDJWMzJoLTJ6bS0xMC0ydjI2aDJWMzBoLTJ6TTM2IDB2MjZoMlYwaC0yem0tMTAgMnYyNmgyVjJoLTJ6bS0xMCAydjI2aDJWNGgtMnpNNCAwaDJ2NjBINDZNMCAwaDZ2MkgwVjB6bTAgMTBoNnYySDB2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+<div class="max-w-[1280px] mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+<div data-anim="slide-left" class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-3xl">headset_mic</span>
+</div>
+<div>
+<h2 class="text-2xl font-bold mb-2">Partner With Us for Precision</h2>
+<p class="text-white/80">We are always open to new partnerships and collaborations.</p>
+</div>
+</div>
+<a data-anim="slide-right" data-anim-delay="200" class="magnetic bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-cobalt-deep transition-all flex items-center gap-2 whitespace-nowrap" href="Contact-Us.html">
+                Contact Us Today <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full bg-white border-t border-outline-variant/30 pt-20 pb-10">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+<div class="lg:col-span-2 pr-8">
+<img alt="AumNamah Lab Logo" class="h-14 w-auto object-contain mb-6" src="assets/images/logo.png"/>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">
+                        Dedicated to delivering high-quality, affordable and innovative precision testing that improves safety worldwide.
+                    </p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">share</span></a>
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">language</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-cobalt-deep mb-6">Quick Links</h4>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="About-Us.html">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html">Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Research</a></li>
+<li><a class="hover:text-primary transition-colors" href="Contact-Us.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-cobalt-deep mb-6">Our Services</h4>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="Services.html#food">Food &amp; Agriculture</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html#water">Water Samples</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html#environment">Environment (NORM)</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html#industrial">Industrial Samples</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html">Other Tests</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-cobalt-deep mb-6">Contact Us</h4>
+<address class="not-italic text-sm text-on-surface-variant space-y-4">
+<p>
+<strong>AumNamah Radioanalytical Lab</strong><br/>
+                            CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>
+                            Keshav Puram, New Delhi-110035
+                        </p>
+<p class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<a class="hover:text-primary" href="tel:+918920723168">+91 8920723168</a>, <a class="hover:text-primary" href="tel:+919717686925">+91 9717686925</a>
+</p>
+<p class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<a class="hover:text-primary" href="mailto:info@aumnamahral.com">info@aumnamahral.com</a>
+</p>
+<div class="mt-4 p-3 bg-surface-container rounded-lg border border-outline-variant/30">
+    <p class="text-xs font-mono font-semibold text-cobalt-deep"><span class="text-primary mr-1">GSTIN:</span> 07ACHFA5663Q1ZR</p>
+</div>
+</address>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
+<p>© 2026 AumNamah Radioanalytical Laboratory. All Rights Reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms &amp; Conditions</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Premium scroll animation engine -->
+<script src="assets/js/animations.js" defer></script>
+
+<!-- Floating Action Buttons -->
+<style>
+.floating-stack {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    pointer-events: none;
+}
+.floating-stack > * { pointer-events: auto; }
+
+/* ---------- Premium WhatsApp pill ---------- */
+.fab-whatsapp {
+    --wa-green: #25D366;
+    --wa-green-dark: #128C7E;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 22px 0 64px;
+    background: linear-gradient(135deg, var(--wa-green) 0%, var(--wa-green-dark) 100%);
+    color: #fff;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.35), 0 2px 8px rgba(0,0,0,0.08);
+    border: 2px solid rgba(255,255,255,0.45);
+    max-width: 60px;
+    overflow: hidden;
+    transition: max-width 450ms cubic-bezier(.22,1,.36,1), box-shadow 300ms ease, transform 300ms ease;
+    white-space: nowrap;
+}
+.fab-whatsapp:hover,
+.fab-whatsapp:focus-visible {
+    max-width: 300px;
+    box-shadow: 0 14px 36px rgba(37, 211, 102, 0.5), 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+    outline: none;
+}
+.fab-whatsapp__icon {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wa-green);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+}
+.fab-whatsapp__icon svg { width: 26px; height: 26px; fill: currentColor; }
+
+/* Online status dot with pulse */
+.fab-whatsapp__icon::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid #ffffff;
+    animation: fab-pulse-dot 2.4s infinite;
+}
+@keyframes fab-pulse-dot {
+    0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+/* Outer halo ring (subtle, only when collapsed) */
+.fab-whatsapp::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    border: 2px solid var(--wa-green);
+    opacity: 0;
+    animation: fab-halo 3s infinite;
+    pointer-events: none;
+}
+@keyframes fab-halo {
+    0%   { opacity: 0.55; transform: scale(0.92); }
+    70%  { opacity: 0;    transform: scale(1.15); }
+    100% { opacity: 0;    transform: scale(1.15); }
+}
+.fab-whatsapp:hover::before { animation: none; opacity: 0; }
+
+/* Label text (revealed on hover) */
+.fab-whatsapp__label {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.15;
+    transform: translateX(10px);
+    opacity: 0;
+    transition: transform 380ms cubic-bezier(.22,1,.36,1) 80ms, opacity 260ms ease 120ms;
+}
+.fab-whatsapp:hover .fab-whatsapp__label,
+.fab-whatsapp:focus-visible .fab-whatsapp__label {
+    transform: translateX(0);
+    opacity: 1;
+}
+.fab-whatsapp__title { font-size: 14px; font-weight: 700; }
+.fab-whatsapp__sub { font-size: 11px; opacity: 0.9; font-weight: 500; margin-top: 2px; }
+
+/* ---------- Minimal Back-to-top ---------- */
+.fab-top {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #004ac6;
+    border: 1px solid rgba(0, 74, 198, 0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 280ms ease, transform 280ms ease, box-shadow 280ms ease, background 200ms ease, color 200ms ease;
+}
+.fab-top.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.fab-top:hover,
+.fab-top:focus-visible {
+    background: #004ac6;
+    color: #ffffff;
+    box-shadow: 0 12px 26px rgba(0, 74, 198, 0.32);
+    transform: translateY(-2px);
+    outline: none;
+}
+.fab-top svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.fab-top::after {
+    content: 'Back to top';
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    background: #1E3A8A;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+.fab-top:hover::after,
+.fab-top:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+    .floating-stack { right: 16px; bottom: 16px; gap: 12px; }
+    .fab-whatsapp { height: 54px; padding-left: 58px; padding-right: 18px; max-width: 54px; }
+    .fab-whatsapp__icon { width: 44px; height: 44px; left: 3px; top: 3px; }
+    .fab-whatsapp__icon svg { width: 22px; height: 22px; }
+    .fab-whatsapp:hover { max-width: 260px; }
+    .fab-whatsapp__title { font-size: 13px; }
+    .fab-whatsapp__sub { font-size: 10px; }
+    .fab-top { width: 44px; height: 44px; }
+    .fab-top svg { width: 18px; height: 18px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .fab-whatsapp, .fab-top, .fab-whatsapp__label,
+    .fab-whatsapp::before, .fab-whatsapp__icon::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+
+<div class="floating-stack" aria-label="Quick actions">
+    <a href="https://wa.me/918920723168" target="_blank" rel="noopener" class="fab-whatsapp" aria-label="Chat with us on WhatsApp">
+        <span class="fab-whatsapp__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </span>
+        <span class="fab-whatsapp__label">
+            <span class="fab-whatsapp__title">Chat with us</span>
+            <span class="fab-whatsapp__sub">Typically replies in minutes</span>
+        </span>
+    </a>
+    <button type="button" class="fab-top" id="scrollTopBtn" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+</div>
+
+<script>
+(function () {
+    var btn = document.getElementById('scrollTopBtn');
+    if (!btn) return;
+    var onScroll = function () {
+        if (window.scrollY > 300) btn.classList.add('is-visible');
+        else btn.classList.remove('is-visible');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    onScroll();
+})();
+</script>
+<!-- End Floating Action Buttons -->
+
+</body>
+</html>
