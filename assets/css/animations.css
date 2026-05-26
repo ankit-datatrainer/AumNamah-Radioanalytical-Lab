@@ -75,6 +75,18 @@
     transform: translateY(0);
 }
 
+/* Fix Chrome/Webkit rendering bug for kinetic words with gradient text */
+[data-anim="kinetic-words"] .text-transparent {
+    background-image: none !important;
+}
+[data-anim="kinetic-words"] .text-transparent .word > span {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
 /* ============================================================
    Gradient sweep (animated underline / accent bar)
    ============================================================ */

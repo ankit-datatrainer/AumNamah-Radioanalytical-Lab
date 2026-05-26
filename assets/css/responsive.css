@@ -1,0 +1,560 @@
+/* =====================================================================
+   AumNamah Radioanalytical Lab — Global Responsive Overrides
+   Loaded last so it can defeat Tailwind play CDN's runtime-injected styles.
+   Scope: site-wide, no per-page edits required.
+   ===================================================================== */
+
+/* ----- Universal hardening (all viewports) ----- */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden;          /* defensive: prevents stray fixed-width children from causing horizontal scroll */
+    max-width: 100%;
+}
+
+img, video, svg, canvas, picture {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    /* prevent broken-image alt text from blowing the layout */
+    display: block;
+}
+
+a, button {
+    -webkit-tap-highlight-color: rgba(0, 74, 198, 0.18);
+}
+
+/* Long URLs / words shouldn't overflow */
+p, li, dd, dt, span, td, th, blockquote {
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* Tables overflow horizontally instead of breaking layout */
+table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Code blocks and pre on mobile */
+pre, code {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Inputs: 16px font prevents iOS auto-zoom; ensure they shrink with container */
+input, textarea, select {
+    max-width: 100%;
+    font-size: 16px !important;
+}
+
+/* Fix iOS Safari "fixed" parallax — it doesn't honour fixed attachment and
+   often causes severe scroll jank. Use scroll attachment on touch devices. */
+@supports (-webkit-touch-callout: none) {
+    .hero-parallax {
+        background-attachment: scroll !important;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .hero-parallax {
+        background-attachment: scroll !important;
+    }
+}
+
+/* =====================================================================
+   Tablet & below (≤ 1024px)
+   ===================================================================== */
+@media (max-width: 1024px) {
+    .hero-parallax {
+        background-attachment: scroll !important;
+    }
+
+    /* Disable expensive backdrop-filter on lower-power devices to avoid jank */
+    .glass-panel {
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+    }
+}
+
+/* =====================================================================
+   Tablet (≤ 768px) — softer container padding, smaller hero heights
+   ===================================================================== */
+@media (max-width: 768px) {
+
+    /* Section vertical breathing room */
+    .py-section-padding {
+        padding-top: 64px !important;
+        padding-bottom: 64px !important;
+    }
+
+    .pt-section-padding { padding-top: 64px !important; }
+    .pb-section-padding { padding-bottom: 64px !important; }
+
+    /* Tighten oversized fixed min-heights used on heroes & cards */
+    .min-h-\[600px\] { min-height: 480px !important; }
+    .min-h-\[500px\] { min-height: 380px !important; }
+    .min-h-\[450px\] { min-height: 340px !important; }
+    .min-h-\[400px\] { min-height: 320px !important; }
+
+    /* Headlines that ship without the responsive switcher */
+    .text-headline-xl {
+        font-size: 40px !important;
+        line-height: 48px !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    .text-headline-lg {
+        font-size: 32px !important;
+        line-height: 40px !important;
+    }
+
+    .text-headline-md {
+        font-size: 22px !important;
+        line-height: 30px !important;
+    }
+
+    /* Section gutters */
+    .gap-gutter { gap: 24px !important; }
+    .gap-card-gap { gap: 20px !important; }
+
+    /* Footer columns — make them stack cleaner */
+    footer .grid {
+        gap: 32px !important;
+    }
+}
+
+/* =====================================================================
+   Mobile (≤ 640px)
+   ===================================================================== */
+@media (max-width: 640px) {
+
+    /* Site-wide horizontal padding: was 32px, now 16px */
+    .px-8  { padding-left: 16px !important; padding-right: 16px !important; }
+    .px-6  { padding-left: 14px !important; padding-right: 14px !important; }
+
+    /* Hero / section vertical padding compression */
+    .py-section-padding {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+    }
+
+    .pt-16 { padding-top: 32px !important; }
+    .pb-16 { padding-bottom: 32px !important; }
+    .pt-20 { padding-top: 40px !important; }
+    .pb-20 { padding-bottom: 40px !important; }
+
+    /* Headlines */
+    .text-headline-xl {
+        font-size: 32px !important;
+        line-height: 38px !important;
+    }
+
+    .text-headline-lg {
+        font-size: 26px !important;
+        line-height: 34px !important;
+    }
+
+    /* Card / grid card heights — let content drive height */
+    .min-h-\[600px\] { min-height: 420px !important; }
+    .min-h-\[500px\] { min-height: 340px !important; }
+    .min-h-\[450px\] { min-height: 300px !important; }
+    .min-h-\[400px\] { min-height: 280px !important; }
+    .min-h-\[350px\] { min-height: 240px !important; }
+
+    /* Hero CTA stacks on phones */
+    .hero-cta-row,
+    section .flex.flex-row.gap-4 {
+        flex-wrap: wrap;
+    }
+
+    /* Glass panel padding compression */
+    .p-10 { padding: 24px !important; }
+    .p-8  { padding: 20px !important; }
+    .p-6  { padding: 16px !important; }
+
+    /* Reduce gigantic letter-spacing on small headlines */
+    h1, h2 {
+        letter-spacing: -0.01em !important;
+    }
+
+    /* Footer copyright row stacking */
+    footer .flex.justify-between {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    /* Ensure interactive targets are at least 44×44px (a11y) */
+    a.text-on-surface-variant,
+    a.text-cobalt-deep,
+    button:not(.rl-chatbot__chip):not(.rl-chatbot__close):not(.rl-chatbot__send) {
+        min-height: 40px;
+    }
+}
+
+/* =====================================================================
+   Small phones (≤ 380px) — extreme tightening
+   ===================================================================== */
+@media (max-width: 380px) {
+    .px-8  { padding-left: 12px !important; padding-right: 12px !important; }
+    .text-headline-xl {
+        font-size: 28px !important;
+        line-height: 34px !important;
+    }
+    .text-headline-lg { font-size: 22px !important; line-height: 30px !important; }
+    .text-headline-md { font-size: 20px !important; line-height: 28px !important; }
+
+    .text-body-lg { font-size: 16px !important; line-height: 24px !important; }
+}
+
+/* =====================================================================
+   Header / navigation
+   ===================================================================== */
+@media (max-width: 768px) {
+    /* Brand logo doesn't shrink the whole header; keep it at a usable size */
+    header img {
+        height: 36px !important;
+    }
+
+    /* CTA "Request Analysis" button next to hamburger — hide cleanly */
+    header .hidden.md\:flex {
+        display: none !important;
+    }
+
+    /* Hamburger button: bigger tap target, neat circle */
+    header button.md\:hidden {
+        width: 44px;
+        height: 44px;
+        border-radius: 9999px;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 200ms ease;
+    }
+
+    header button.md\:hidden:hover,
+    header button.md\:hidden:active {
+        background: rgba(0, 74, 198, 0.08);
+    }
+
+    /* Header padding compression */
+    header > div,
+    header .flex.justify-between {
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+    }
+}
+
+/* =====================================================================
+   Forms — make inputs neat on touch
+   ===================================================================== */
+@media (max-width: 640px) {
+    .form-input-clean,
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="url"],
+    input[type="number"],
+    textarea,
+    select {
+        font-size: 16px !important;       /* prevents iOS zoom on focus */
+        padding: 12px 14px !important;
+        border-radius: 10px;
+    }
+
+    label {
+        margin-bottom: 6px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    form .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* =====================================================================
+   Footer / copyright row
+   ===================================================================== */
+@media (max-width: 768px) {
+    footer .grid.grid-cols-2,
+    footer .grid.grid-cols-3,
+    footer .grid.grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    footer h4 {
+        font-size: 14px !important;
+    }
+
+    footer p, footer a, footer li {
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    footer .grid.grid-cols-2,
+    footer .grid.grid-cols-3,
+    footer .grid.grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        text-align: left;
+    }
+}
+
+/* =====================================================================
+   Animation / motion preferences
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =====================================================================
+   Utility: visible focus for keyboard users (a11y)
+   ===================================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #004ac6;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* =====================================================================
+   Print styles — clean PDF/print output
+   ===================================================================== */
+@media print {
+    .rl-chatbot,
+    .rl-preloader,
+    header,
+    footer,
+    .glow-orb,
+    .anim-orb,
+    [data-anim],
+    nav { display: none !important; }
+
+    main { padding: 0 !important; }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    a { color: #004ac6 !important; text-decoration: underline; }
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        color: #555;
+    }
+}
+
+/* =====================================================================
+   Mobile navigation drawer (injected by mobile-nav.js)
+   ===================================================================== */
+.rl-mnav {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.rl-mnav[data-open="true"] {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.rl-mnav__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 250ms ease;
+}
+
+.rl-mnav[data-open="true"] .rl-mnav__backdrop {
+    opacity: 1;
+}
+
+.rl-mnav__panel {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: min(86vw, 320px);
+    background: #ffffff;
+    box-shadow: -16px 0 40px -12px rgba(15, 23, 42, 0.25);
+    transform: translateX(100%);
+    transition: transform 280ms cubic-bezier(0.2, 0.9, 0.3, 1.0);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 22px;
+    overflow-y: auto;
+}
+
+.rl-mnav[data-open="true"] .rl-mnav__panel {
+    transform: translateX(0);
+}
+
+.rl-mnav__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.rl-mnav__head img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+}
+
+.rl-mnav__close {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: #1e3a8a;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.rl-mnav__close:hover {
+    background: rgba(0, 74, 198, 0.08);
+    transform: rotate(90deg);
+}
+
+.rl-mnav__close .material-symbols-outlined { font-size: 24px; }
+
+.rl-mnav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rl-mnav__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 6px;
+    border-bottom: 1px solid #eef0f6;
+    color: #434655;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 180ms ease, padding-left 180ms ease;
+}
+
+.rl-mnav__link:hover {
+    color: #004ac6;
+    padding-left: 10px;
+}
+
+.rl-mnav__link[aria-current="page"] {
+    color: #004ac6;
+    font-weight: 700;
+}
+
+.rl-mnav__link[aria-current="page"]::before {
+    content: "";
+    width: 4px;
+    height: 18px;
+    background: #004ac6;
+    border-radius: 2px;
+    margin-right: 8px;
+}
+
+.rl-mnav__link .material-symbols-outlined {
+    font-size: 18px;
+    color: #c3c6d7;
+    transition: transform 180ms ease, color 180ms ease;
+}
+
+.rl-mnav__link:hover .material-symbols-outlined {
+    color: #004ac6;
+    transform: translateX(3px);
+}
+
+.rl-mnav__cta {
+    margin-top: auto;
+    padding-top: 24px;
+}
+
+.rl-mnav__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 18px;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px -6px rgba(0, 74, 198, 0.5);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.rl-mnav__cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -6px rgba(0, 74, 198, 0.6);
+}
+
+.rl-mnav__cta-btn .material-symbols-outlined { font-size: 18px; }
+
+.rl-mnav__contact {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #eef0f6;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: #737686;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.rl-mnav__contact a {
+    color: #1e3a8a;
+    text-decoration: none;
+}
+
+.rl-mnav__contact a:hover { color: #004ac6; }
+
+/* When the body is locked open, prevent background scroll */
+body.rl-mnav-open {
+    overflow: hidden !important;
+}

@@ -1,0 +1,16 @@
+# robots.txt — AumNamah Radioanalytical Laboratory
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Don't index utility / dev artefacts
+Disallow: /404.html
+Disallow: /assets/Certificate*
+Disallow: /_*
+
+# Crawl politeness
+Crawl-delay: 1
+
+# Sitemap (update host name to your real deployment domain if different)
+Sitemap: https://www.aumnamahral.com/sitemap.xml

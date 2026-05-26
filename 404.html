@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Page Not Found - AumNamah Radioanalytical Lab</title>
+<meta name="description" content="The page you requested could not be found at AumNamah Radioanalytical Laboratory. Return to home or browse our testing services."/>
+<meta name="robots" content="noindex, follow"/>
+<meta name="theme-color" content="#004ac6"/>
+
+<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png"/>
+<link rel="manifest" href="assets/favicons/site.webmanifest"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Manrope:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/chatbot.css" rel="stylesheet"/>
+<link href="assets/css/responsive.css" rel="stylesheet"/>
+
+<style>
+:root {
+    --primary: #004ac6;
+    --primary-bright: #2563eb;
+    --cobalt-deep: #1e3a8a;
+    --surface: #faf8ff;
+    --on-surface: #191b23;
+    --on-surface-variant: #434655;
+    --outline-soft: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 74, 198, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(rgba(0, 74, 198, 0.05) 1.5px, transparent 1.5px) center / 24px 24px,
+        linear-gradient(180deg, #faf8ff 0%, #ffffff 100%);
+}
+
+.topbar {
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar img {
+    height: 44px;
+    width: auto;
+}
+
+.topbar a.home-link {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 80px;
+}
+
+.hero {
+    max-width: 720px;
+    text-align: center;
+    position: relative;
+}
+
+.eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--primary);
+    opacity: 0.4;
+}
+
+.giant {
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(96px, 22vw, 200px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--cobalt-deep) 0%, var(--primary) 50%, var(--primary-bright) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.giant::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, var(--surface) 100%);
+    pointer-events: none;
+}
+
+h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 5vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--cobalt-deep);
+    margin-bottom: 14px;
+}
+
+.lead {
+    font-size: clamp(15px, 2.2vw, 18px);
+    line-height: 1.6;
+    color: var(--on-surface-variant);
+    max-width: 540px;
+    margin: 0 auto 32px;
+}
+
+.actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-bright) 100%);
+    color: #fff;
+    box-shadow: 0 8px 22px -6px rgba(0, 74, 198, 0.45);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -6px rgba(0, 74, 198, 0.55);
+}
+
+.btn-outline {
+    background: #fff;
+    color: var(--primary);
+    border-color: var(--outline-soft);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--cobalt-deep);
+    transform: translateY(-2px);
+}
+
+.btn .material-symbols-outlined { font-size: 18px; }
+
+.shortcuts {
+    margin-top: 56px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+    box-shadow: 0 14px 38px -16px rgba(15, 23, 42, 0.18);
+    text-align: left;
+}
+
+.shortcuts h2 {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: 14px;
+}
+
+.shortcuts ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .shortcuts ul { grid-template-columns: 1fr; }
+}
+
+.shortcuts a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--on-surface);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 180ms ease, color 180ms ease, padding-left 180ms ease;
+}
+
+.shortcuts a:hover {
+    background: rgba(0, 74, 198, 0.06);
+    color: var(--primary);
+    padding-left: 16px;
+}
+
+.shortcuts a .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--primary);
+}
+
+footer {
+    padding: 18px 32px;
+    text-align: center;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    opacity: 0.7;
+    border-top: 1px solid var(--outline-soft);
+}
+
+@media (max-width: 480px) {
+    .topbar { padding: 16px; }
+    main { padding: 24px 16px 60px; }
+    .shortcuts { padding: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<header class="topbar">
+    <a href="index.html" aria-label="AumNamah Radioanalytical Lab — Home">
+        <img src="assets/images/logo.png" alt="AumNamah Radioanalytical Lab Logo"/>
+    </a>
+    <a class="home-link" href="index.html">
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+        Back to home
+    </a>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="eyebrow">
+            <span>ERROR · 404 · PAGE NOT FOUND</span>
+        </div>
+        <div class="giant">404</div>
+        <h1>This page is off the radar.</h1>
+        <p class="lead">
+            The page you requested could not be located. It may have been moved or no longer exists. Use the links below to continue exploring our laboratory services.
+        </p>
+
+        <div class="actions">
+            <a class="btn btn-primary" href="index.html">
+                <span class="material-symbols-outlined">home</span>
+                Return Home
+            </a>
+            <a class="btn btn-outline" href="Contact-Us.html">
+                <span class="material-symbols-outlined">support_agent</span>
+                Contact Support
+            </a>
+        </div>
+
+        <div class="shortcuts" role="navigation" aria-label="Suggested pages">
+            <h2>Suggested destinations</h2>
+            <ul>
+                <li><a href="Services.html"><span class="material-symbols-outlined">science</span>Our Services</a></li>
+                <li><a href="About-Us.html"><span class="material-symbols-outlined">info</span>About Us</a></li>
+                <li><a href="Radiological_Testing.html"><span class="material-symbols-outlined">radio</span>Radiological Testing</a></li>
+                <li><a href="Chemical_Testing.html"><span class="material-symbols-outlined">experiment</span>Chemical Testing</a></li>
+                <li><a href="Biological_Testing.html"><span class="material-symbols-outlined">biotech</span>Biological Testing</a></li>
+                <li><a href="Certifications.html"><span class="material-symbols-outlined">verified</span>Certifications</a></li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © AumNamah Radioanalytical Laboratory · All Rights Reserved
+</footer>
+
+<script src="assets/js/chatbot.js" defer></script>
+</body>
+</html>
