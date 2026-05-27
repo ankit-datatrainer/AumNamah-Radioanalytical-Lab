@@ -310,6 +310,8 @@
 </div>
 <!-- ============================================================ -->
 
+<!-- TopAppBar Component -->
+<header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
 <!-- Top Bar -->
 <div class="bg-cobalt-deep text-white py-2 hidden md:block">
 <div class="max-w-[1280px] mx-auto px-8 flex justify-between items-center text-sm">
@@ -329,8 +331,6 @@
 </div>
 </div>
 </div>
-<!-- TopAppBar Component -->
-<header class="sticky top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
 <div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
 <a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
 <img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
@@ -352,7 +352,7 @@
 </div>
 </div>
 </header>
-<main>
+<main class="pt-[72px] md:pt-[116px]">
 <!-- ============================================================
      HERO SECTION — Premium kinetic reveal
      ============================================================ -->
@@ -1088,9 +1088,13 @@
                             CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>
                             Keshav Puram, New Delhi-110035
                         </p>
-<p class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px]">call</span>
-<a class="hover:text-primary" href="tel:+918920723168">+91 8920723168</a>, <a class="hover:text-primary" href="tel:+919717686925">+91 9717686925</a>
+<p class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0">call</span>
+<span class="flex flex-col sm:flex-row sm:items-center gap-x-2 gap-y-1">
+<a class="hover:text-primary whitespace-nowrap" href="tel:+918920723168">+91 8920723168</a>
+<span class="hidden sm:inline text-on-surface-variant/40">/</span>
+<a class="hover:text-primary whitespace-nowrap" href="tel:+919717686925">+91 9717686925</a>
+</span>
 </p>
 <p class="flex items-center gap-2">
 <span class="material-symbols-outlined text-[16px]">mail</span>

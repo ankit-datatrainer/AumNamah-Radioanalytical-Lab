@@ -375,7 +375,7 @@ textarea:focus-visible {
 .rl-mnav {
     position: fixed;
     inset: 0;
-    z-index: 9000;
+    z-index: 10000; /* above FABs (9999) and chatbot */
     pointer-events: none;
     visibility: hidden;
 }

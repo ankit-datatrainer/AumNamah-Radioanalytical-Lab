@@ -227,7 +227,7 @@
 
         .floating-nav {
             position: sticky;
-            top: 80px;
+            top: 116px;
             z-index: 40;
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
@@ -319,7 +319,26 @@
 <!-- ============================================================ -->
 
 <!-- TopAppBar Component -->
-<header class="sticky top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+<header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+<!-- Top Bar -->
+<div class="bg-cobalt-deep text-white py-2 hidden md:block">
+<div class="max-w-[1280px] mx-auto px-8 flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-medium">Committed to Clinical Precision. Driven by Innovation.</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>Quality You Can Trust</span>
+</div>
+<div class="flex items-center gap-2 border-l border-white/20 pl-6">
+<span class="material-symbols-outlined text-[16px]">health_and_safety</span>
+<span>ISO Compliant Lab</span>
+</div>
+</div>
+</div>
+</div>
 <div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
 <a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
 <img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
@@ -341,6 +360,8 @@
 </div>
 </div>
 </header>
+
+<div class="pt-[72px] md:pt-[116px]">
 <!-- Floating Section Nav -->
 <div class="floating-nav hidden lg:block shadow-sm">
 <div class="max-w-[1280px] mx-auto px-8 py-3 flex justify-center gap-12">
@@ -360,6 +381,8 @@
             </p>
 </div>
 </section>
+</div>
+
 <!-- Main Content Area -->
 <main class="flex-grow w-full max-w-container-max mx-auto px-8 py-16">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -630,7 +653,14 @@
 <div class="flex flex-col gap-3">
 <h4 class="font-bold text-cobalt-deep mb-2 text-sm">Contact Us</h4>
 <p class="text-sm text-on-surface-variant"><strong>AumNamah Radioanalytical Lab</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area, Keshav Puram, New Delhi-110035</p>
-<p class="text-sm text-on-surface-variant mt-2 flex items-center gap-2"><span class="material-symbols-outlined text-sm">call</span> <a class="hover:text-primary" href="tel:+918920723168">+91 8920723168</a>, <a class="hover:text-primary" href="tel:+919717686925">+91 9717686925</a></p>
+<p class="text-sm text-on-surface-variant mt-2 flex items-start gap-2">
+<span class="material-symbols-outlined text-sm mt-0.5 shrink-0">call</span>
+<span class="flex flex-col sm:flex-row sm:items-center gap-x-2 gap-y-1">
+<a class="hover:text-primary whitespace-nowrap" href="tel:+918920723168">+91 8920723168</a>
+<span class="hidden sm:inline text-on-surface-variant/40">/</span>
+<a class="hover:text-primary whitespace-nowrap" href="tel:+919717686925">+91 9717686925</a>
+</span>
+</p>
 <p class="text-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> <a class="hover:text-primary" href="mailto:info@aumnamahral.com">info@aumnamahral.com</a></p>
 <div class="mt-4 p-3 bg-gray-50 rounded border border-gray-200">
     <p class="text-xs font-mono font-semibold text-cobalt-deep"><span class="text-primary mr-1">GSTIN:</span> 07ACHFA5663Q1ZR</p>

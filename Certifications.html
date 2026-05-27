@@ -430,7 +430,7 @@
         }
     </style>
 </head>
-<body class="bg-laboratory-white text-on-surface font-body-md antialiased pt-24 min-h-screen flex flex-col">
+<body class="bg-laboratory-white text-on-surface font-body-md antialiased min-h-screen flex flex-col">
 
 <!-- ============================================================
      Clean Preloader — White & Blue Lab Theme
@@ -516,6 +516,25 @@
 
 <!-- TopAppBar Component -->
 <header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+<!-- Top Bar -->
+<div class="bg-cobalt-deep text-white py-2 hidden md:block">
+<div class="max-w-[1280px] mx-auto px-8 flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-medium">Committed to Clinical Precision. Driven by Innovation.</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>Quality You Can Trust</span>
+</div>
+<div class="flex items-center gap-2 border-l border-white/20 pl-6">
+<span class="material-symbols-outlined text-[16px]">health_and_safety</span>
+<span>ISO Compliant Lab</span>
+</div>
+</div>
+</div>
+</div>
 <div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
 <a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
 <img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
@@ -565,7 +584,7 @@
 </div>
 
 <!-- Main Layout Structure -->
-<main class="flex-grow w-full pt-12 overflow-hidden relative">
+<main class="flex-grow w-full pt-[72px] md:pt-[116px] overflow-hidden relative">
     
     <!-- Tech Grid Subtle Background -->
     <div class="absolute inset-0 bg-tech-grid z-0"></div>
@@ -851,7 +870,14 @@
 <div class="flex flex-col gap-3">
 <h4 class="font-bold text-cobalt-deep mb-2 text-sm">Contact Us</h4>
 <p class="text-sm text-on-surface-variant"><strong>AumNamah Radioanalytical Lab</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area, Keshav Puram, New Delhi-110035</p>
-<p class="text-sm text-on-surface-variant mt-2 flex items-center gap-2"><span class="material-symbols-outlined text-sm">call</span> <a class="hover:text-primary" href="tel:+918920723168">+91 8920723168</a>, <a class="hover:text-primary" href="tel:+919717686925">+91 9717686925</a></p>
+<p class="text-sm text-on-surface-variant mt-2 flex items-start gap-2">
+<span class="material-symbols-outlined text-sm mt-0.5 shrink-0">call</span>
+<span class="flex flex-col sm:flex-row sm:items-center gap-x-2 gap-y-1">
+<a class="hover:text-primary whitespace-nowrap" href="tel:+918920723168">+91 8920723168</a>
+<span class="hidden sm:inline text-on-surface-variant/40">/</span>
+<a class="hover:text-primary whitespace-nowrap" href="tel:+919717686925">+91 9717686925</a>
+</span>
+</p>
 <p class="text-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> <a class="hover:text-primary" href="mailto:info@aumnamahral.com">info@aumnamahral.com</a></p>
 <div class="mt-4 p-3 bg-gray-50 rounded border border-gray-200">
     <p class="text-xs font-mono font-semibold text-cobalt-deep"><span class="text-primary mr-1">GSTIN:</span> 07ACHFA5663Q1ZR</p>
@@ -1126,18 +1152,21 @@
 </div>
 
 <!-- Image Lightbox Modal -->
-<div id="imageLightbox" class="fixed inset-0 z-[100000] bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0" aria-modal="true" role="dialog">
-    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center transition-transform duration-300 scale-95" id="imageLightboxContent">
-        <!-- Close Button -->
-        <button onclick="closeImageLightbox()" class="absolute top-[-50px] right-0 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors duration-200 focus:outline-none" aria-label="Close">
-            <span class="material-symbols-outlined text-2xl">close</span>
-        </button>
-        <!-- Image -->
-        <div class="w-full h-full overflow-auto flex justify-center items-center rounded-xl bg-slate-900 border border-white/10 p-2 shadow-2xl">
-            <img id="lightboxImageSrc" class="max-w-full max-h-[80vh] object-contain rounded-lg" src="" alt="Scope of Accreditation Fullscreen" />
+<div id="imageLightbox" class="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-md hidden transition-opacity duration-300 opacity-0" style="overflow:hidden;">
+    <!-- Close Button — OUTSIDE the transformed wrapper so fixed positioning works -->
+    <button onclick="closeImageLightbox()" class="fixed top-4 right-4 md:top-6 md:right-6 z-[100000] flex items-center justify-center w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 border border-white/20 text-white backdrop-blur-sm transition-all duration-200 cursor-pointer" aria-label="Close lightbox" style="pointer-events:auto;">
+        <span class="material-symbols-outlined" style="font-size:28px;">close</span>
+    </button>
+
+    <!-- Content wrapper (animated via transform) -->
+    <div id="imageLightboxContent" class="w-full h-full flex flex-col items-center justify-center p-4 md:p-8 transform scale-95 transition-transform duration-300">
+        <!-- Scrollable Image Container -->
+        <div class="w-full h-full max-w-6xl overflow-auto rounded-xl bg-slate-900/80 border border-white/10 shadow-2xl" style="-webkit-overflow-scrolling:touch;">
+            <!-- Image renders at native resolution; user can scroll/pinch-zoom on mobile -->
+            <img id="lightboxImageSrc" src="" alt="Scope of Accreditation Fullscreen" style="display:block; width:100%; min-width:700px; height:auto; image-rendering:auto;" />
         </div>
         <!-- Title Footer -->
-        <div class="mt-4 text-center text-white/90 font-mono text-sm tracking-wider flex items-center gap-2">
+        <div class="mt-3 text-center text-white/90 font-mono text-sm tracking-wider flex items-center gap-2 flex-shrink-0">
             <span class="material-symbols-outlined text-cyan-400 text-base">verified</span>
             <span>AumNamah NABL Scope of Accreditation</span>
         </div>

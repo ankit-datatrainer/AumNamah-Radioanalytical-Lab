@@ -66,7 +66,7 @@
         {
             id: 'thanks',
             patterns: [/\b(thanks|thank\s*you|thx|thnx|ty|appreciate)\b/],
-            reply: 'You\'re most welcome! 🙏 If anything else comes up, just ask — I\'m here.',
+            reply: 'You\'re most welcome! 🙏 Please select an option below to continue.',
             chips: ['Our services', 'Contact info', 'Book appointment']
         },
 
@@ -74,7 +74,7 @@
             id: 'bye',
             patterns: [/\b(bye|goodbye|see\s*you|cya|later|good\s*night)\b/],
             reply: 'Thank you for visiting AumNamah RAL. Have a precise and productive day! ⚛️',
-            chips: ['Reach support', 'Book appointment']
+            chips: ['Our services', 'Book appointment']
         },
 
         {
@@ -85,8 +85,8 @@
                 /\bwhat\s*are\s*you\b/
             ],
             reply: 'I\'m the <strong>AumNamah Assistant</strong> — an automated guide for our website. ' +
-                   'For technical or commercial queries, our scientists are happy to help directly.',
-            chips: ['Talk to a person', 'Our services']
+                   'For technical or commercial queries, please reach out to our team directly.',
+            chips: ['Contact info', 'Our services']
         },
 
         /* -------- Hours / availability -------- */
@@ -149,8 +149,8 @@
                    '📞 <a href="tel:' + BRAND.phone1Tel + '">' + BRAND.phone1 + '</a> &nbsp;|&nbsp; <a href="tel:' + BRAND.phone2Tel + '">' + BRAND.phone2 + '</a><br>' +
                    '✉️ <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a><br>' +
                    '📍 ' + BRAND.address + '<br>' +
-                   'Or use our <a href="Contact-Us.html">contact form</a> and we\'ll get back to you.',
-            chips: ['Open contact page', 'Operating hours', 'Book appointment']
+                   'Or use our <a href="./Contact-Us.html">online contact form</a> to send us a request.',
+            chips: ['Open contact page', 'Phone number', 'Operating hours']
         },
 
         /* -------- Services overview -------- */
@@ -171,7 +171,7 @@
                    '<li>🏭 Industrial &amp; Manufactured Goods</li>' +
                    '</ul>' +
                    'Which area would you like to explore?',
-            chips: ['Radiological', 'Chemical', 'Biological', 'Water', 'Food', 'View Services page']
+            chips: ['Radiological', 'Chemical', 'Biological', 'Water', 'Food', 'All services']
         },
 
         /* -------- Radiological -------- */
@@ -341,18 +341,17 @@
             chips: ['Our services', 'Certifications', 'Contact info']
         },
 
-        /* -------- Appointment / booking -------- */
         {
             id: 'appointment',
             patterns: [
                 /\b(appoint|book|booking|schedule|reservation|register|reserve|consult|meeting)\b/
             ],
             reply: '<strong>Book an appointment</strong><br>' +
-                   'You can request an appointment or analysis directly through our ' +
+                   'Request an appointment or analysis via our ' +
                    '<a href="Contact-Us.html">online form</a>, or call ' +
                    '<a href="tel:' + BRAND.phone1Tel + '">' + BRAND.phone1 + '</a>. ' +
                    'Please mention the test type, sample details and your preferred date.',
-            chips: ['Open contact form', 'Phone number', 'Email us']
+            chips: ['Book appointment', 'Phone number', 'Email us']
         },
 
         /* -------- Privacy / Terms -------- */
@@ -378,15 +377,14 @@
                 /\boptions?\b/,
                 /\bmenu\b/
             ],
-            reply: 'I can help you with:' +
+            reply: 'Here is what I can help you with — please tap an option below:' +
                    '<ul>' +
-                   '<li>Our testing services (radiological, chemical, biological, water, food, environmental)</li>' +
+                   '<li>Testing services (radiological, chemical, biological, water, food)</li>' +
                    '<li>Operating hours, address &amp; contact details</li>' +
                    '<li>Sample submission &amp; turnaround time</li>' +
                    '<li>Quotations &amp; appointment requests</li>' +
                    '<li>Certifications &amp; accreditations</li>' +
-                   '</ul>' +
-                   'Tap a chip below or just type your question.',
+                   '</ul>',
             chips: ['Our services', 'Contact info', 'Operating hours', 'Book appointment', 'Certifications']
         }
     ];
@@ -397,46 +395,44 @@
      * intent matches when the user clicks them.
      * ----------------------------------------------------------------- */
     var CHIP_QUERY_MAP = {
-        'Our services':         'What services do you offer?',
-        'View Services page':   'Open services page',
-        'Open Services page':   'Open services page',
-        'Open services page':   'open Services.html',
-        'Open Certifications page': 'open Certifications.html',
-        'Open contact page':    'open Contact-Us.html',
-        'Open contact form':    'open Contact-Us.html',
-        'All services':         'show all services',
-        'Talk to a person':     'I want to talk to a representative',
-        'Reach support':        'How do I contact support?',
-        'Contact info':         'How can I contact you?',
-        'Operating hours':      'What are your operating hours?',
-        'Address':              'Where are you located?',
-        'Phone number':         'phone number',
-        'Email':                'email',
-        'Email us':             'email',
-        'Get a quote':          'How much does it cost? quotation',
-        'Book appointment':     'I want to book an appointment',
-        'Sample submission':    'How do I submit a sample?',
-        'Turnaround time':      'What is your turnaround time?',
-        'Radiological':         'Tell me about radiological testing',
-        'Chemical':             'Tell me about chemical testing',
-        'Biological':           'Tell me about biological testing',
-        'Water':                'Tell me about water testing',
-        'Food':                 'Tell me about food testing',
-        'Certifications':       'Tell me about your certifications',
-        'Privacy Policy':       'open Privacy-Policy.html',
-        'Terms & Conditions':   'open Terms-Conditions.html'
+        'Our services':             'What services do you offer?',
+        'Contact info':             'How can I contact you?',
+        'Operating hours':          'What are your operating hours?',
+        'Address':                  'Where are you located?',
+        'Phone number':             'phone number',
+        'Email':                    'email',
+        'Email us':                 'email',
+        'Get a quote':              'How much does it cost? quotation',
+        'Sample submission':        'How do I submit a sample?',
+        'Turnaround time':          'What is your turnaround time?',
+        'Certifications':           'Tell me about your certifications',
+        'Radiological':             'Tell me about radiological testing',
+        'Chemical':                 'Tell me about chemical testing',
+        'Biological':               'Tell me about biological testing',
+        'Water':                    'Tell me about water testing',
+        'Food':                     'Tell me about food testing',
+        'Radiological testing':     'Tell me about radiological testing',
+        'Chemical testing':         'Tell me about chemical testing',
+        'Biological testing':       'Tell me about biological testing',
+        'Water testing':            'Tell me about water testing',
+        'Food testing':             'Tell me about food testing'
     };
 
-    /* Page navigation chips (label → URL) so clicking actually navigates. */
+    /* Page navigation chips (label → URL) so clicking actually navigates.
+     * Keys MUST match chip labels exactly (case-sensitive).
+     * Values MUST match the actual filenames exactly (case-sensitive). */
     var CHIP_NAV_MAP = {
-        'View Services page':       'Services.html',
-        'Open services page':       'Services.html',
-        'Open Services page':       'Services.html',
-        'Open contact page':        'Contact-Us.html',
-        'Open contact form':        'Contact-Us.html',
-        'Open Certifications page': 'Certifications.html',
-        'Privacy Policy':           'Privacy-Policy.html',
-        'Terms & Conditions':       'Terms-Conditions.html'
+        'View Services page':       './Services.html',
+        'Open Services page':       './Services.html',
+        'Open services page':       './Services.html',
+        'All services':             './Services.html',
+        'Open contact page':        './Contact-Us.html',
+        'Open contact form':        './Contact-Us.html',
+        'Book appointment':         './Contact-Us.html',
+        'Open Certifications page': './Certifications.html',
+        'Privacy Policy':           './Privacy-Policy.html',
+        'Terms & Conditions':       './Terms-Conditions.html',
+        'About Us':                 './About-Us.html'
     };
 
     /* -----------------------------------------------------------------
@@ -445,9 +441,9 @@
     var DEFAULT_CHIPS = ['Our services', 'Operating hours', 'Contact info', 'Book appointment'];
 
     var FALLBACK_REPLIES = [
-        'Sorry, I didn\'t quite catch that. Could you rephrase, or pick one of the suggestions below?',
-        'Hmm, I\'m not sure about that one. Try one of these topics or ask in a different way:',
-        'I might need a hint — could you ask differently? Some things I can help with:'
+        'Please choose an option from the menu below:',
+        'I can help with the topics listed below — please tap one:',
+        'Please select an option from the suggestions below:'
     ];
 
     /* -----------------------------------------------------------------
@@ -461,14 +457,17 @@
         var t = normalize(text);
         if (!t) return null;
 
-        // Direct "open X.html" handling for chip nav
-        var navMatch = t.match(/open\s+([a-z0-9_\-]+\.html)/);
-        if (navMatch) {
+        // Direct "open X.html" handling for chip nav.
+        // IMPORTANT: match against the original (non-lowercased) text to preserve
+        // the exact filename case (e.g. Contact-Us.html, not contact-us.html).
+        var navMatchRaw = text.match(/open\s+((?:\.\/)?[A-Za-z0-9_\-]+\.html)/i);
+        if (navMatchRaw) {
+            var targetFile = navMatchRaw[1]; // preserve original case
             return {
                 id: '__navigate',
-                reply: 'Opening <strong>' + navMatch[1] + '</strong>…',
+                reply: 'Opening page…',
                 chips: DEFAULT_CHIPS,
-                navigate: navMatch[1]
+                navigate: targetFile
             };
         }
 
@@ -479,7 +478,6 @@
             var intent = INTENTS[i];
             for (var j = 0; j < intent.patterns.length; j++) {
                 if (intent.patterns[j].test(t)) {
-                    // score = pattern length proxy; longer matched substrings beat short ones
                     var m = t.match(intent.patterns[j]);
                     var score = (m && m[0]) ? m[0].length : 1;
                     score += (intent.priority || 0) * 100;
@@ -562,8 +560,6 @@
         root: null,
         body: null,
         quick: null,
-        input: null,
-        sendBtn: null,
         panel: null,
         history: [],
         isTyping: false,
@@ -628,35 +624,11 @@
             });
             panel.appendChild(body);
 
-            // Quick replies
+            // Quick replies (the ONLY interaction method — no free-text input)
             var quick = el('div', 'rl-chatbot__quick', { 'aria-label': 'Quick replies' });
             panel.appendChild(quick);
 
-            // Input
-            var inputWrap = el('div', 'rl-chatbot__input-wrap');
-            var form = el('form', null, {
-                role: 'search',
-                'aria-label': 'Send a message',
-                style: 'display:contents;'
-            });
-            var input = el('input', 'rl-chatbot__input', {
-                type: 'text',
-                placeholder: 'Type your message…',
-                autocomplete: 'off',
-                'aria-label': 'Message',
-                maxlength: '500'
-            });
-            var sendBtn = el('button', 'rl-chatbot__send', {
-                type: 'submit',
-                'aria-label': 'Send message'
-            });
-            sendBtn.appendChild(el('span', 'material-symbols-outlined', { text: 'send' }));
-            form.appendChild(input);
-            form.appendChild(sendBtn);
-            inputWrap.appendChild(form);
-            panel.appendChild(inputWrap);
-
-            // Footer
+            // Footer hint
             var footer = el('div', 'rl-chatbot__footer');
             footer.appendChild(el('span', null, { text: 'AumNamah RAL · automated assistant' }));
             panel.appendChild(footer);
@@ -669,21 +641,11 @@
             this.panel = panel;
             this.body = body;
             this.quick = quick;
-            this.input = input;
-            this.sendBtn = sendBtn;
 
             // Wire events
             var self = this;
             fab.addEventListener('click', function () { self.open(); });
             closeBtn.addEventListener('click', function () { self.close(); });
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                self.handleUserInput(input.value);
-            });
-            input.addEventListener('input', function () {
-                sendBtn.disabled = input.value.trim().length === 0;
-            });
-            sendBtn.disabled = true;
 
             // Close on ESC
             document.addEventListener('keydown', function (e) {
@@ -701,11 +663,10 @@
                 this.renderHistory();
             }
 
-            // Restore open state
-            if (safeGet(OPEN_KEY) === '1') {
-                // small delay so the entry animation plays nicely
-                setTimeout(function () { self.open(true); }, 300);
-            }
+            // Always start closed; user must click FAB to open.
+            // (We deliberately do NOT restore the open state across page navigations
+            //  to prevent the panel from covering the page on mobile.)
+            safeSet(OPEN_KEY, '0');
         },
 
         renderHistory: function () {
@@ -759,8 +720,6 @@
         handleUserInput: function (text) {
             var trimmed = String(text || '').trim();
             if (!trimmed) return;
-            this.input.value = '';
-            this.sendBtn.disabled = true;
             this.userSay(trimmed);
             this.processQuery(trimmed);
         },
