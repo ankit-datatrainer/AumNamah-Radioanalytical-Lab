@@ -57,10 +57,10 @@
             ],
             reply: function () {
                 return 'Hello! 👋 Welcome to <strong>AumNamah Radioanalytical Laboratory</strong>. ' +
-                       'I can help you with our testing services, certifications, sample submission, and contact details. ' +
+                       'I can help you with our <strong>testing services</strong>, <strong>certification</strong>, sample submission, and contact details. ' +
                        'How may I assist you today?';
             },
-            chips: ['Our services', 'Book appointment', 'Contact info', 'Operating hours']
+            chips: ['Our services', 'Certification', 'Contact info', 'Operating hours']
         },
 
         {
@@ -269,6 +269,8 @@
             chips: ['Open Certifications page', 'Our services', 'Contact info']
         },
 
+
+
         /* -------- Quote / pricing -------- */
         {
             id: 'quote',
@@ -385,7 +387,7 @@
                    '<li>Quotations &amp; appointment requests</li>' +
                    '<li>Certifications &amp; accreditations</li>' +
                    '</ul>',
-            chips: ['Our services', 'Contact info', 'Operating hours', 'Book appointment', 'Certifications']
+            chips: ['Our services', 'Certification', 'Operating hours', 'Book appointment', 'Certifications']
         }
     ];
 
@@ -406,6 +408,7 @@
         'Sample submission':        'How do I submit a sample?',
         'Turnaround time':          'What is your turnaround time?',
         'Certifications':           'Tell me about your certifications',
+        'Certification':            'Tell me about your certifications',
         'Radiological':             'Tell me about radiological testing',
         'Chemical':                 'Tell me about chemical testing',
         'Biological':               'Tell me about biological testing',
@@ -430,6 +433,7 @@
         'Open contact form':        './Contact-Us.html',
         'Book appointment':         './Contact-Us.html',
         'Open Certifications page': './Certifications.html',
+        'Certification':            './Certifications.html',
         'Privacy Policy':           './Privacy-Policy.html',
         'Terms & Conditions':       './Terms-Conditions.html',
         'About Us':                 './About-Us.html'
@@ -438,7 +442,7 @@
     /* -----------------------------------------------------------------
      * Default suggestions shown when nothing else fits
      * ----------------------------------------------------------------- */
-    var DEFAULT_CHIPS = ['Our services', 'Operating hours', 'Contact info', 'Book appointment'];
+    var DEFAULT_CHIPS = ['Our services', 'Certification', 'Operating hours', 'Contact info'];
 
     var FALLBACK_REPLIES = [
         'Please choose an option from the menu below:',
@@ -495,7 +499,7 @@
     function getReply(intent, rawText) {
         if (!intent) {
             var msg = FALLBACK_REPLIES[Math.floor(Math.random() * FALLBACK_REPLIES.length)];
-            return { html: msg, chips: ['Our services', 'Contact info', 'Operating hours', 'Book appointment', 'Help'] };
+            return { html: msg, chips: ['Our services', 'Certification', 'Operating hours', 'Contact info', 'Help'] };
         }
         var html = (typeof intent.reply === 'function') ? intent.reply(rawText) : intent.reply;
         return {
@@ -697,9 +701,9 @@
                 setTimeout(function () {
                     self.botSay(
                         'Hello and welcome to <strong>AumNamah Radioanalytical Laboratory</strong>! 👋<br>' +
-                        'I\'m your virtual assistant. I can help with our services, contact info, sample submission, ' +
-                        'pricing, and more. How may I help you today?',
-                        ['Our services', 'Operating hours', 'Contact info', 'Book appointment', 'Get a quote']
+                        'I\'m your virtual assistant. Explore our <strong>services</strong> or view our <strong>certification</strong> — ' +
+                        'I can also help with contact info, sample submission, pricing, and more. How may I help you today?',
+                        ['Our services', 'Certification', 'Operating hours', 'Contact info', 'Get a quote']
                     );
                 }, 280);
             }
