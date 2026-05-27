@@ -262,11 +262,9 @@
             patterns: [
                 /\b(certif|accredit|nabl|aerb|iso|iec|17025|license|licence|approval|recognis|recognized)\b/
             ],
-            reply: '<strong>Accreditations &amp; Certifications</strong><br>' +
-                   'AumNamah RAL is an <strong>AERB accredited</strong> facility and operates under ISO/IEC 17025 quality systems. ' +
-                   'GSTIN: <code>' + BRAND.gstin + '</code>.<br>' +
-                   '👉 Full list and certificates on the <a href="Certifications.html">Certifications page</a>.',
-            chips: ['Open Certifications page', 'Our services', 'Contact info']
+            reply: 'Opening Certifications page...',
+            navigate: './Certifications.html',
+            chips: ['Our services', 'Contact info']
         },
 
 
@@ -407,8 +405,6 @@
         'Get a quote':              'How much does it cost? quotation',
         'Sample submission':        'How do I submit a sample?',
         'Turnaround time':          'What is your turnaround time?',
-        'Certifications':           'Tell me about your certifications',
-        'Certification':            'Tell me about your certifications',
         'Radiological':             'Tell me about radiological testing',
         'Chemical':                 'Tell me about chemical testing',
         'Biological':               'Tell me about biological testing',
@@ -433,6 +429,7 @@
         'Open contact form':        './Contact-Us.html',
         'Book appointment':         './Contact-Us.html',
         'Open Certifications page': './Certifications.html',
+        'Certifications':           './Certifications.html',
         'Certification':            './Certifications.html',
         'Privacy Policy':           './Privacy-Policy.html',
         'Terms & Conditions':       './Terms-Conditions.html',
