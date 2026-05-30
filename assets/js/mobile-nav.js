@@ -20,9 +20,8 @@
         { href: 'About-Us.html',             label: 'About Us',       icon: 'info' },
         { href: 'Services.html',             label: 'Services',       icon: 'science' },
         { href: 'Radiological_Testing.html', label: 'Radiological',   icon: 'radio' },
-        { href: 'Chemical_Testing.html',     label: 'Chemical',       icon: 'experiment' },
-        { href: 'Biological_Testing.html',   label: 'Biological',     icon: 'biotech' },
         { href: 'Certifications.html',       label: 'Certifications', icon: 'verified' },
+        { href: 'Blog.html',                 label: 'Blog',           icon: 'article' },
         { href: 'Contact-Us.html',           label: 'Contact',        icon: 'mail' }
     ];
 
@@ -32,7 +31,8 @@
         ctaLabel: 'Request Analysis',
         phone: '+91-8920723168',
         phoneTel: '+918920723168',
-        email: 'info@aumnamahral.com'
+        email: 'info@aumnamahral.com',
+        email2: 'aumnamah.testing@gmail.com'
     };
 
     function currentFile() {
@@ -111,7 +111,8 @@
         var contact = el('div', 'rl-mnav__contact');
         contact.innerHTML =
             '<div>📞 <a href="tel:' + BRAND.phoneTel + '">' + BRAND.phone + '</a></div>' +
-            '<div>✉️ <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a></div>';
+            '<div>✉️ <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a></div>' +
+            '<div>✉️ <a href="mailto:' + BRAND.email2 + '">' + BRAND.email2 + '</a></div>';
         ctaWrap.appendChild(contact);
 
         panel.appendChild(ctaWrap);

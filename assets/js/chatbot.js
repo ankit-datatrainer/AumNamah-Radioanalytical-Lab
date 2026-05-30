@@ -26,6 +26,7 @@
         phone2: '+91-9717686925',
         phone2Tel: '+919717686925',
         email: 'info@aumnamahral.com',
+        email2: 'aumnamah.testing@gmail.com',
         address: 'CC-1, First Floor, Community Centre, Lawrence Road Industrial Area, Keshav Puram, New Delhi-110035',
         hours: 'Monday - Saturday: 09:00 - 18:00 IST',
         gstin: '07ACHFA5663Q1ZR'
@@ -100,7 +101,7 @@
             reply: '<strong>Operating hours</strong><br>' +
                    '🕘 ' + BRAND.hours + '<br>' +
                    'Closed on Sundays and public holidays. For urgent matters outside hours, please email ' +
-                   '<a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a>.',
+                   '<a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a> or <a href="mailto:' + BRAND.email2 + '">' + BRAND.email2 + '</a>.',
             chips: ['Address', 'Contact info', 'Book appointment']
         },
 
@@ -133,7 +134,7 @@
         {
             id: 'email',
             patterns: [/\b(email|e-?mail|mail\s*id|write\s*to|contact\s*us\s*via\s*mail)\b/],
-            reply: '✉️ Drop us a line at <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a> — ' +
+            reply: '✉️ Drop us a line at <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a> or <a href="mailto:' + BRAND.email2 + '">' + BRAND.email2 + '</a> — ' +
                    'we typically respond within 1 business day.',
             chips: ['Phone number', 'Book appointment', 'Get a quote']
         },
@@ -148,6 +149,7 @@
             reply: '<strong>Get in touch</strong><br>' +
                    '📞 <a href="tel:' + BRAND.phone1Tel + '">' + BRAND.phone1 + '</a> &nbsp;|&nbsp; <a href="tel:' + BRAND.phone2Tel + '">' + BRAND.phone2 + '</a><br>' +
                    '✉️ <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a><br>' +
+                   '✉️ <a href="mailto:' + BRAND.email2 + '">' + BRAND.email2 + '</a><br>' +
                    '📍 ' + BRAND.address + '<br>' +
                    'Or use our <a href="./Contact-Us.html">online contact form</a> to send us a request.',
             chips: ['Open contact page', 'Phone number', 'Operating hours']
@@ -163,18 +165,14 @@
             reply: 'We offer a comprehensive radioanalytical & life-science testing portfolio:' +
                    '<ul>' +
                    '<li>☢️ <strong>Radiological Testing</strong> — isotope &amp; radiation analysis</li>' +
-                   '<li>🧪 <strong>Chemical Testing</strong> — heavy metals, residues, contaminants</li>' +
-                   '<li>🧫 <strong>Biological / Microbiological Testing</strong></li>' +
                    '<li>🥗 Food &amp; Agricultural Products</li>' +
                    '<li>💧 Water Quality (drinking, ground, industrial)</li>' +
                    '<li>🌿 Environmental (soil, air)</li>' +
                    '<li>🏭 Industrial &amp; Manufactured Goods</li>' +
                    '</ul>' +
                    'Which area would you like to explore?',
-            chips: ['Radiological', 'Chemical', 'Biological', 'Water', 'Food', 'All services']
-        },
-
-        /* -------- Radiological -------- */
+            chips: ['Radiological', 'Water', 'Food', 'All services']
+        },        /* -------- Radiological -------- */
         {
             id: 'radiological',
             patterns: [
@@ -187,31 +185,7 @@
             chips: ['Get a quote', 'Sample submission', 'Turnaround time', 'All services']
         },
 
-        /* -------- Chemical -------- */
-        {
-            id: 'chemical',
-            patterns: [
-                /\b(chemical|chemistry|heavy\s*metal|pesticide|residue|organic|inorganic|toxin|toxicolog|contamin|metal\s*test)\b/
-            ],
-            reply: '<strong>Chemical Testing</strong><br>' +
-                   'Trace-level detection of heavy metals (Pb, Cd, As, Hg…), pesticide residues, organic/inorganic contaminants, ' +
-                   'and product chemistry — using AAS, ICP-MS, GC-MS, HPLC and more.<br>' +
-                   '👉 Details on the <a href="Chemical_Testing.html">Chemical Testing page</a>.',
-            chips: ['Get a quote', 'Sample submission', 'Turnaround time', 'All services']
-        },
 
-        /* -------- Biological -------- */
-        {
-            id: 'biological',
-            patterns: [
-                /\b(biolog|microb|bacter|e\.?\s*coli|coliform|salmonell|fung|yeast|mold|patho|microbiology|viable|count)\b/
-            ],
-            reply: '<strong>Biological / Microbiological Testing</strong><br>' +
-                   'Total plate count, coliforms, E. coli, Salmonella, yeast &amp; mould, pathogen screening, sterility — ' +
-                   'for food, water, pharma and clinical samples.<br>' +
-                   '👉 Visit the <a href="Biological_Testing.html">Biological Testing page</a>.',
-            chips: ['Get a quote', 'Sample submission', 'Turnaround time', 'All services']
-        },
 
         /* -------- Water -------- */
         {
@@ -278,6 +252,7 @@
             reply: 'Pricing depends on the test type, parameters, sample matrix and turnaround required. ' +
                    'For an accurate quote please share your requirement via:<br>' +
                    '✉️ <a href="mailto:' + BRAND.email + '?subject=Quotation%20Request">' + BRAND.email + '</a><br>' +
+                   '✉️ <a href="mailto:' + BRAND.email2 + '?subject=Quotation%20Request">' + BRAND.email2 + '</a><br>' +
                    '📞 <a href="tel:' + BRAND.phone1Tel + '">' + BRAND.phone1 + '</a><br>' +
                    'Or use our <a href="Contact-Us.html">request form</a> — we usually reply within 1 business day.',
             chips: ['Open contact form', 'Email us', 'Sample submission']
@@ -295,7 +270,7 @@
                    '<li>Include your contact details &amp; the parameters required.</li>' +
                    '<li>Drop off at our lab during ' + BRAND.hours + ', or send via courier.</li>' +
                    '</ul>' +
-                   'Please email <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a> first so we can ' +
+                   'Please email <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a> or <a href="mailto:' + BRAND.email2 + '">' + BRAND.email2 + '</a> first so we can ' +
                    'share matrix-specific instructions and a sample-submission form.',
             chips: ['Address', 'Get a quote', 'Turnaround time']
         },
@@ -323,7 +298,7 @@
             patterns: [/\b(report|result|results|findings|certificate|test\s*certificate|coa)\b/],
             reply: 'Test reports are issued in PDF and (on request) hard copy, with full traceability, ' +
                    'method references and analyst signatures. Status updates are available by phone or email. ' +
-                   'Need a copy of an existing report? Please email <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a> ' +
+                   'Need a copy of an existing report? Please email <a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a> or <a href="mailto:' + BRAND.email2 + '">' + BRAND.email2 + '</a> ' +
                    'with your job ID.',
             chips: ['Email us', 'Phone number', 'Turnaround time']
         },
@@ -335,7 +310,7 @@
                 /\b(about|company|history|who.*(you|aumnamah)|tell.*about|introduction)\b/
             ],
             reply: '<strong>About AumNamah Radioanalytical Laboratory</strong><br>' +
-                   'A New-Delhi based, AERB-accredited facility specialising in radiological, chemical and biological ' +
+                   'A New-Delhi based, AERB-accredited facility specialising in radiological ' +
                    'analysis with laboratory-grade precision and modern instrumentation.<br>' +
                    '👉 Read more on the <a href="About-Us.html">About Us</a> page.',
             chips: ['Our services', 'Certifications', 'Contact info']
@@ -379,7 +354,7 @@
             ],
             reply: 'Here is what I can help you with — please tap an option below:' +
                    '<ul>' +
-                   '<li>Testing services (radiological, chemical, biological, water, food)</li>' +
+                   '<li>Testing services (radiological, water, food)</li>' +
                    '<li>Operating hours, address &amp; contact details</li>' +
                    '<li>Sample submission &amp; turnaround time</li>' +
                    '<li>Quotations &amp; appointment requests</li>' +
@@ -406,13 +381,9 @@
         'Sample submission':        'How do I submit a sample?',
         'Turnaround time':          'What is your turnaround time?',
         'Radiological':             'Tell me about radiological testing',
-        'Chemical':                 'Tell me about chemical testing',
-        'Biological':               'Tell me about biological testing',
         'Water':                    'Tell me about water testing',
         'Food':                     'Tell me about food testing',
         'Radiological testing':     'Tell me about radiological testing',
-        'Chemical testing':         'Tell me about chemical testing',
-        'Biological testing':       'Tell me about biological testing',
         'Water testing':            'Tell me about water testing',
         'Food testing':             'Tell me about food testing'
     };

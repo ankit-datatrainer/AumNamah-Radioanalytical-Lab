@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Blog Post - AumNamah Radioanalytical Lab</title>
+    
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="assets/css/animations.css" rel="stylesheet"/>
+    <link href="assets/css/responsive.css" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                "laboratory-white": "#F8FAFC",
+                "primary": "#004ac6",
+                "cobalt-deep": "#1E3A8A",
+                "surface": "#ffffff",
+                "on-surface": "#191b23",
+                "on-surface-variant": "#434655",
+                "outline-variant": "#c3c6d7",
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        
+        /* Custom Prose Styling for the Blog Content */
+        .prose img {
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .prose h1, .prose h2, .prose h3 {
+            font-family: 'Manrope', sans-serif;
+            color: #1E3A8A;
+        }
+        .prose a {
+            color: #004ac6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-laboratory-white min-h-screen flex flex-col">
+
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+    <div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
+        <a class="flex items-center gap-3" href="index.html">
+            <img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="index.html">Home</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="About-Us.html">About Us</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Services.html">Services</a>
+            <a class="font-body-md text-primary font-semibold border-b-2 border-primary pb-1 font-medium" href="Blog.html">Blog</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Certifications.html">Certifications</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Contact-Us.html">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="Contact-Us.html" class="hidden md:flex bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-cobalt-deep transition-colors items-center gap-2">
+                Request Analysis <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+
+<!-- Admin Profile Dropdown (Hidden by default, shown via JS if logged in) -->
+<div class="relative hidden items-center text-left" id="mainProfileDropdownContainer">
+    <button onclick="toggleMainDropdown(event)" class="flex items-center gap-2 md:gap-3 focus:outline-none hover:bg-gray-50 p-1.5 rounded-xl transition-colors border border-transparent hover:border-gray-200">
+        <div class="h-9 w-9 md:h-10 md:w-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-base md:text-lg">
+            A
+        </div>
+        <div class="hidden lg:flex flex-col items-start text-sm text-left">
+            <span class="font-bold text-gray-800 leading-tight">System Admin</span>
+            <span class="text-xs text-gray-500">admin@aumnamahral.com</span>
+        </div>
+        <span class="material-symbols-outlined text-gray-400 text-sm hidden lg:block">expand_more</span>
+    </button>
+    
+    <!-- Dropdown Menu -->
+    <div id="mainProfileDropdown" class="hidden absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-[0_10px_40px_rgb(0,0,0,0.08)] border border-gray-100 divide-y divide-gray-100 transform origin-top-right transition-all">
+        <div class="p-4 flex items-center gap-3 lg:hidden">
+             <div class="h-10 w-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-lg">
+                A
+            </div>
+            <div class="flex flex-col items-start text-sm text-left">
+                <span class="font-bold text-gray-800 leading-tight">System Admin</span>
+                <span class="text-xs text-gray-500">admin@aumnamahral.com</span>
+            </div>
+        </div>
+        <div class="p-3">
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3">My Account</p>
+            <a href="Admin-Dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors font-medium">
+                <span class="material-symbols-outlined text-[18px]">dashboard</span> Dashboard
+            </a>
+            
+            <a href="Admin-Dashboard.html#settings" class="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors font-medium">
+                <span class="material-symbols-outlined text-[18px]">settings</span> Settings
+            </a>
+        </div>
+        <div class="p-2">
+            <button onclick="mainLogout()" class="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors font-semibold">
+                <span class="material-symbols-outlined text-[18px]">logout</span> Sign Out
+            </button>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="flex-grow w-full pt-[80px]">
+    
+    <!-- Hero Banner (Injected via JS) -->
+    <div id="heroSection" class="w-full h-[400px] md:h-[500px] bg-gray-200 relative hidden">
+        <img id="heroImage" src="" alt="Blog Feature Image" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-cobalt-deep via-cobalt-deep/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full">
+            <div class="max-w-[800px] mx-auto px-6 pb-12 pt-20">
+                <a href="Blog.html" class="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-semibold mb-6 transition-colors">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Blog
+                </a>
+                <span id="postDate" class="text-primary-300 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-white mb-4 inline-block"></span>
+                <h1 id="postTitle" class="font-headline text-3xl md:text-5xl text-white font-bold leading-tight mb-4"></h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <section class="max-w-[800px] mx-auto px-6 py-16">
+        
+        <div id="errorState" class="hidden text-center py-20">
+            <span class="material-symbols-outlined text-6xl text-gray-300 mb-4 block">error</span>
+            <h2 class="font-headline text-2xl font-bold text-cobalt-deep mb-2">Post Not Found</h2>
+            <p class="text-on-surface-variant mb-6">The blog post you are looking for does not exist or has been removed.</p>
+            <a href="Blog.html" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-cobalt-deep transition-colors inline-block">Return to Blog</a>
+        </div>
+
+        <div id="loadingState" class="text-center py-20">
+            <div class="animate-pulse flex flex-col items-center">
+                <div class="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
+                <div class="h-4 bg-gray-200 rounded w-1/2 mb-8"></div>
+                <div class="space-y-3 w-full">
+                    <div class="h-4 bg-gray-200 rounded w-full"></div>
+                    <div class="h-4 bg-gray-200 rounded w-full"></div>
+                    <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="postContentContainer" class="hidden">
+            <div id="postContent" class="prose prose-lg prose-blue max-w-none text-on-surface-variant">
+                <!-- Content injected here -->
+            </div>
+            
+            <!-- Author / Share Section -->
+            <div class="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl">
+                        A
+                    </div>
+                    <div>
+                        <p class="font-headline font-bold text-cobalt-deep text-lg">AumNamah Editorial</p>
+                        <p class="text-sm text-gray-500">Radioanalytical Testing Experts</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-semibold text-gray-500">Share:</span>
+                    <button class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors" title="Copy Link" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');">
+                        <span class="material-symbols-outlined text-[20px]">link</span>
+                    </button>
+                    <a href="mailto:?subject=Read this blog post&body=Check this out: " class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors" title="Email" onclick="this.href += window.location.href">
+                        <span class="material-symbols-outlined text-[20px]">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<!-- Footer Component -->
+<footer class="w-full bg-white border-t border-outline-variant/30 pt-20 pb-10 mt-auto">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
+<div class="lg:col-span-2 pr-8">
+<img alt="AumNamah Lab Logo" class="h-14 w-auto object-contain mb-6" src="assets/images/logo.png"/>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">
+                        Dedicated to delivering high-quality, affordable and innovative precision testing that improves safety worldwide.
+                    </p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">share</span></a>
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">language</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-cobalt-deep mb-6">Quick Links</h4>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="About-Us.html">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html">Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="Blog.html">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="Certifications.html">Certifications</a></li>
+<li><a class="hover:text-primary transition-colors" href="Contact-Us.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-cobalt-deep mb-6">Our Services</h4>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="Services.html#food">Food &amp; Agriculture</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html#water">Water Samples</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html#environment">Environment (NORM)</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html#industrial">Industrial Samples</a></li>
+<li><a class="hover:text-primary transition-colors" href="Services.html">Other Tests</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-cobalt-deep mb-6">Support</h4>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="Privacy-Policy.html">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="Terms-Conditions.html">Terms &amp; Conditions</a></li>
+<li><a class="hover:text-primary transition-colors" href="Certifications.html">Certifications</a></li>
+<li><a class="hover:text-primary transition-colors font-semibold flex items-center gap-2" href="Admin-Login.html"><span class="material-symbols-outlined text-[16px]">admin_panel_settings</span> Admin Login</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-cobalt-deep mb-6">Contact Us</h4>
+<address class="not-italic text-sm text-on-surface-variant space-y-4">
+<p>
+<strong>AumNamah Radioanalytical Lab</strong><br/>
+                            CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>
+                            Keshav Puram, New Delhi-110035
+                        </p>
+<p class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0">call</span>
+<span class="flex flex-col sm:flex-row sm:items-center gap-x-2 gap-y-1">
+<a class="hover:text-primary whitespace-nowrap" href="tel:+918920723168">+91 8920723168</a>
+<span class="hidden sm:inline text-on-surface-variant/40">/</span>
+<a class="hover:text-primary whitespace-nowrap" href="tel:+919717686925">+91 9717686925</a>
+</span>
+</p>
+<p class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0">mail</span>
+<span class="flex flex-col gap-y-1"><a class="hover:text-primary whitespace-nowrap" href="mailto:info@aumnamahral.com">info@aumnamahral.com</a><a class="hover:text-primary whitespace-nowrap" href="mailto:aumnamah.testing@gmail.com">aumnamah.testing@gmail.com</a></span>
+</p>
+<div class="mt-4 p-3 bg-surface-container rounded-lg border border-outline-variant/30">
+    <p class="text-xs font-mono font-semibold text-cobalt-deep"><span class="text-primary mr-1">GSTIN:</span> 07ACHFA5663Q1ZR</p>
+</div>
+</address>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
+<p>© 2026 AumNamah Radioanalytical Laboratory. All Rights Reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="Privacy-Policy.html">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="Terms-Conditions.html">Terms &amp; Conditions</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="assets/js/blog-store.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogId = urlParams.get('id');
+
+        const loadingState = document.getElementById('loadingState');
+        const errorState = document.getElementById('errorState');
+        const contentContainer = document.getElementById('postContentContainer');
+        const heroSection = document.getElementById('heroSection');
+
+        if (!blogId) {
+            loadingState.classList.add('hidden');
+            errorState.classList.remove('hidden');
+            return;
+        }
+
+        // Wait a small tick to ensure store is ready if needed, though it's synchronous
+        setTimeout(async () => {
+            const blog = await window.blogStore.getBlogById(blogId);
+            
+            loadingState.classList.add('hidden');
+
+            if (!blog || blog.status !== 'published') {
+                errorState.classList.remove('hidden');
+                return;
+            }
+
+            // Populate Data
+            document.title = `${blog.title} - AumNamah Blog`;
+            
+            document.getElementById('heroImage').src = blog.featureImage || 'assets/images/logo.png';
+            document.getElementById('postTitle').textContent = blog.title;
+            
+            const dateStr = new Date(blog.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('postDate').textContent = dateStr;
+            
+            document.getElementById('postContent').innerHTML = blog.content;
+
+            heroSection.classList.remove('hidden');
+            contentContainer.classList.remove('hidden');
+        }, 100);
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Check if admin is logged in
+        const isAdmin = sessionStorage.getItem('admin_token') === 'valid';
+        if (isAdmin) {
+            const profileContainer = document.getElementById('mainProfileDropdownContainer');
+            if (profileContainer) {
+                profileContainer.classList.remove('hidden');
+                profileContainer.classList.add('inline-flex'); // using inline-flex for alignment
+            }
+        }
+    });
+
+    function toggleMainDropdown(e) {
+        e.stopPropagation();
+        const dropdown = document.getElementById('mainProfileDropdown');
+        if (dropdown) {
+            dropdown.classList.toggle('hidden');
+        }
+    }
+
+    function closeMainDropdown() {
+        const dropdown = document.getElementById('mainProfileDropdown');
+        if (dropdown && !dropdown.classList.contains('hidden')) {
+            dropdown.classList.add('hidden');
+        }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        const container = document.getElementById('mainProfileDropdownContainer');
+        if (container && !container.contains(e.target)) {
+            closeMainDropdown();
+        }
+    });
+
+    function mainLogout() {
+        sessionStorage.removeItem('admin_token');
+        // Refresh page so profile hides and session is cleared completely
+        window.location.reload();
+    }
+</script>
+
+</body>
+</html>

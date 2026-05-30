@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Admin Login - AumNamah Radioanalytical Lab</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                "laboratory-white": "#F8FAFC",
+                "primary": "#004ac6",
+                "cobalt-deep": "#1E3A8A",
+                "surface": "#ffffff",
+                "on-surface": "#191b23",
+                "on-surface-variant": "#434655",
+                "outline-variant": "#c3c6d7",
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+    <script>
+        if (sessionStorage.getItem('admin_token') === 'valid') {
+            window.location.href = 'Admin-Dashboard.html';
+        }
+    </script>
+</head>
+<body class="bg-laboratory-white min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl border border-gray-100 p-8 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-24 h-24 bg-cobalt-deep/5 rounded-tr-full -z-10"></div>
+        
+        <div class="text-center mb-8">
+            <img src="assets/images/logo.png" alt="AumNamah Logo" class="h-12 mx-auto mb-4" />
+            <h1 class="font-headline text-2xl text-cobalt-deep font-bold mb-2">Portal Access</h1>
+            <p class="text-sm text-on-surface-variant">Sign in to manage your website content.</p>
+        </div>
+
+        <form id="loginForm" class="space-y-5">
+            <div>
+                <label class="block text-sm font-semibold text-on-surface mb-1" for="email">Email Address</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-3 text-gray-400 text-sm">mail</span>
+                    <input type="email" id="email" class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="admin@example.com" required>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-on-surface mb-1" for="password">Password</label>
+                <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3 text-gray-400 text-sm">lock</span>
+                    <input type="password" id="password" class="w-full pl-10 pr-10 py-2 border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="••••••••" required>
+                    <button type="button" id="togglePassword" class="absolute right-3 text-gray-400 hover:text-primary transition-colors focus:outline-none flex items-center">
+                        <span class="material-symbols-outlined text-[18px]" id="toggleIcon">visibility</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="errorMsg" class="text-red-500 text-sm hidden font-medium text-center bg-red-50 py-2 rounded-md"></div>
+
+            <button type="submit" class="w-full bg-primary hover:bg-cobalt-deep text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                Sign In
+                <span class="material-symbols-outlined text-sm">login</span>
+            </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+            <a href="index.html" class="text-sm text-on-surface-variant hover:text-primary inline-flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">arrow_back</span> Return to Website
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Signing In... <span class="material-symbols-outlined text-sm animate-spin">refresh</span>';
+
+                const response = await fetch('api/login.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    sessionStorage.setItem('admin_token', 'valid');
+                    sessionStorage.setItem('admin_email', result.email);
+                    window.location.href = 'Admin-Dashboard.html';
+                } else {
+                    errorMsg.textContent = result.message || 'Invalid email or password.';
+                    errorMsg.classList.remove('hidden');
+                    setTimeout(() => errorMsg.classList.add('hidden'), 3000);
+                }
+            } catch (err) {
+                errorMsg.textContent = 'Network error. Make sure the server is running.';
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => errorMsg.classList.add('hidden'), 3000);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Sign In <span class="material-symbols-outlined text-sm">login</span>';
+            }
+        });
+
+        // Toggle Password Visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const pwdInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                toggleIcon.textContent = 'visibility_off';
+            } else {
+                pwdInput.type = 'password';
+                toggleIcon.textContent = 'visibility';
+            }
+        });
+    </script>
+</body>
+</html>
