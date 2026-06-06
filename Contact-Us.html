@@ -6,7 +6,7 @@
 <title>Contact Us - AumNamah Radioanalytical Laboratory</title>
 <!-- SEO -->
 <meta name="description" content="Contact AumNamah Radioanalytical Laboratory — phone, email, address, and analysis-request form for our NABL-accredited New Delhi facility."/>
-<meta name="keywords" content="AumNamah, radioanalytical laboratory, NABL accredited lab, AERB lab, ISO/IEC 17025, gamma spectrometry, radiation testing, water testing, food testing, environmental testing, New Delhi"/>
+<meta name="keywords" content="AumNamah, radioanalytical laboratory, NABL accredited lab, NABL lab, ISO/IEC 17025, gamma spectrometry, radiation testing, water testing, food testing, environmental testing, New Delhi"/>
 <meta name="author" content="AumNamah Radioanalytical Laboratory"/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#004ac6"/>
@@ -337,18 +337,24 @@
 <!-- TopAppBar Component -->
 <header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
 <!-- Top Bar -->
-<div class="bg-cobalt-deep text-white py-2 hidden md:block">
-<div class="max-w-[1280px] mx-auto px-8 flex justify-between items-center text-sm">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px]">verified</span>
-<span class="font-medium">Committed to Clinical Precision. Driven by Innovation.</span>
+<div class="bg-cobalt-deep text-white py-2">
+<div class="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm gap-2 sm:gap-0">
+<div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+<div class="flex items-center gap-1.5 hover:text-gray-200 transition-colors">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<a href="mailto:info@aumnamahral.com">info@aumnamahral.com</a>
 </div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 hover:text-gray-200 transition-colors sm:border-l sm:border-white/20 sm:pl-4">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<a href="tel:+918920723168">+91 8920723168</a> <span class="hidden md:inline text-white/50 px-1">/</span> <a href="tel:+919717686925" class="hidden md:inline">+91 9717686925</a>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:gap-6 flex-wrap justify-center sm:justify-end hidden md:flex">
+<div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-[16px]">shield</span>
 <span>Quality You Can Trust</span>
 </div>
-<div class="flex items-center gap-2 border-l border-white/20 pl-6">
+<div class="flex items-center gap-1.5 border-l border-white/20 pl-4 sm:pl-6">
 <span class="material-symbols-outlined text-[16px]">health_and_safety</span>
 <span>ISO Compliant Lab</span>
 </div>
@@ -357,7 +363,7 @@
 </div>
 <div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
 <a class="flex items-center gap-3 active:opacity-80 active:scale-95 transition-all duration-200" href="index.html">
-<img alt="AumNamah Lab Logo" class="h-12 w-auto object-contain" src="assets/images/logo.png"/>
+<img alt="AumNamah Lab Logo" class="h-14 sm:h-16 w-auto object-contain scale-110 origin-left" src="assets/images/logo.png"/>
 </a>
 <nav class="hidden md:flex items-center gap-8">
 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="index.html">Home</a>
@@ -430,9 +436,14 @@
 <div class="max-w-[1280px] mx-auto px-8 relative z-20 text-center animate-" data-anim="fade-up">
 <p class="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase">GET IN TOUCH</p>
 <h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-cobalt-deep mb-6">Connect with Our Experts</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-8">
                     Schedule an appointment, request analysis, or inquire about our comprehensive radioanalytical services. Our team of specialists is ready to assist you with precision and care.
                 </p>
+                <div class="mt-8 flex justify-center animate-" data-anim="fade-up" style="transition-delay: 100ms;">
+                    <a class="inline-flex items-center gap-2 bg-cobalt-deep text-white px-8 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:bg-primary transition-all duration-300 transform hover:-translate-y-1" download="Service Request Form (SRF).pdf" href="assets/Service Request Form (SRF).pdf">
+                        <span class="material-symbols-outlined">download</span> Download Test Request
+                    </a>
+                </div>
 </div>
 </section>
 <!-- Main Content Area -->
@@ -498,10 +509,10 @@
 <div>
 <h3 class="font-headline-md text-lg font-semibold text-cobalt-deep mb-1">Corporate Compliance</h3>
 <p class="font-technical-data text-technical-data text-on-surface-variant">
-                                    GSTIN: <span class="text-on-surface font-semibold">07ACHFA5663Q1ZR</span>
+                                    GSTIN: <span class="bg-primary/10 border border-primary/30 text-cobalt-deep font-bold px-2 py-1 mx-1 rounded shadow-sm tracking-widest text-base inline-block">07ACHFA5663Q1ZR</span>
 </p>
 <p class="font-body-md text-sm text-outline mt-2">
-                                    AERB Accredited Facility
+                                    NABL Accredited Facility
                                 </p>
 </div>
 </div>
@@ -547,12 +558,13 @@
 </label>
 <div class="relative">
 <select class="w-full bg-laboratory-white border border-outline-variant/40 rounded-lg px-4 py-3 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 appearance-none cursor-pointer" id="service" name="service">
-<option disabled="" selected="" value="">Select an analysis category...</option>
-<option value="Water & Soil Radioanalysis">Water &amp; Soil Radioanalysis</option>
-<option value="Food & Agriculture Testing">Food &amp; Agriculture Testing</option>
-<option value="Building Materials Assessment">Building Materials Assessment</option>
+<option disabled selected hidden value="">Select an analysis category...</option>
+<option value="Soil and Coal Analysis">Soil and Coal Analysis</option>
+<option value="Environment Sample Analysis">Environment Sample Analysis</option>
+<option value="Water Analysis">Water Analysis</option>
 <option value="Pharmaceutical Validation">Pharmaceutical Validation</option>
-<option value="Other / Consultation">Other / Consultation</option>
+<option value="Building Material Radiological Testing">Building Material Radiological Testing</option>
+<option value="Uranium Content Analysis in Water">Uranium Content Analysis in Water</option>
 </select>
 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-outline">
 <span class="material-symbols-outlined">expand_more</span>
@@ -660,9 +672,9 @@
 <!-- Footer Component -->
 <footer class="w-full bg-white border-t border-outline-variant/30 pt-20 pb-10 mt-auto">
 <div class="max-w-[1280px] mx-auto px-8">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
-<div class="lg:col-span-2 pr-8">
-<img alt="AumNamah Lab Logo" class="h-14 w-auto object-contain mb-6" src="assets/images/logo.png"/>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-3 pr-8">
+<img alt="AumNamah Lab Logo" class="h-16 sm:h-20 w-auto object-contain mb-4 scale-110 origin-left" src="assets/images/logo.png"/>
 <p class="text-sm text-on-surface-variant mb-6 leading-relaxed">
                         Dedicated to delivering high-quality, affordable and innovative precision testing that improves safety worldwide.
                     </p>
@@ -671,7 +683,7 @@
 <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">language</span></a>
 </div>
 </div>
-<div>
+<div class="lg:col-span-2">
 <h4 class="font-bold text-cobalt-deep mb-6">Quick Links</h4>
 <ul class="space-y-3 text-sm text-on-surface-variant">
 <li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
@@ -682,7 +694,7 @@
 <li><a class="hover:text-primary transition-colors" href="Contact-Us.html">Contact</a></li>
 </ul>
 </div>
-<div>
+<div class="lg:col-span-2">
 <h4 class="font-bold text-cobalt-deep mb-6">Our Services</h4>
 <ul class="space-y-3 text-sm text-on-surface-variant">
 <li><a class="hover:text-primary transition-colors" href="Services.html#food">Food &amp; Agriculture</a></li>
@@ -692,7 +704,7 @@
 <li><a class="hover:text-primary transition-colors" href="Services.html">Other Tests</a></li>
 </ul>
 </div>
-<div>
+<div class="lg:col-span-2">
 <h4 class="font-bold text-cobalt-deep mb-6">Support</h4>
 <ul class="space-y-3 text-sm text-on-surface-variant">
 <li><a class="hover:text-primary transition-colors" href="Privacy-Policy.html">Privacy Policy</a></li>
@@ -701,13 +713,11 @@
 <li><a class="hover:text-primary transition-colors font-semibold flex items-center gap-2" href="Admin-Login.html"><span class="material-symbols-outlined text-[16px]">admin_panel_settings</span> Admin Login</a></li>
 </ul>
 </div>
-<div>
+<div class="lg:col-span-3">
 <h4 class="font-bold text-cobalt-deep mb-6">Contact Us</h4>
 <address class="not-italic text-sm text-on-surface-variant space-y-4">
 <p>
-<strong>AumNamah Radioanalytical Lab</strong><br/>
-                            CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>
-                            Keshav Puram, New Delhi-110035
+<strong>Radioanalytical Lab</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>Keshav Puram, New Delhi-110035
                         </p>
 <p class="flex items-start gap-2">
 <span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0">call</span>
@@ -721,9 +731,7 @@
 <span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0">mail</span>
 <span class="flex flex-col gap-y-1"><a class="hover:text-primary whitespace-nowrap" href="mailto:info@aumnamahral.com">info@aumnamahral.com</a><a class="hover:text-primary whitespace-nowrap" href="mailto:aumnamah.testing@gmail.com">aumnamah.testing@gmail.com</a></span>
 </p>
-<div class="mt-4 p-3 bg-surface-container rounded-lg border border-outline-variant/30">
-    <p class="text-xs font-mono font-semibold text-cobalt-deep"><span class="text-primary mr-1">GSTIN:</span> 07ACHFA5663Q1ZR</p>
-</div>
+<div class="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/30"><p class="text-base font-bold text-cobalt-deep"><span class="text-primary mr-1 block text-xs uppercase tracking-wider mb-1">GST Number</span><span class="text-lg tracking-widest">07ACHFA5663Q1ZR</span></p></div>
 </address>
 </div>
 </div>
@@ -1024,3 +1032,11 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
