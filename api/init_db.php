@@ -29,7 +29,7 @@ try {
     if ($stmt->fetchColumn() == 0) {
         $default_name = 'System Admin';
         $default_email = 'info@aumnamahral.com';
-        $default_password = 'Blog@2026';
+        $default_password = 'Aumnamahral@2026';
         $hash = password_hash($default_password, PASSWORD_DEFAULT);
         
         $insert = $pdo->prepare("INSERT INTO admins (display_name, email, password_hash) VALUES (?, ?, ?)");
