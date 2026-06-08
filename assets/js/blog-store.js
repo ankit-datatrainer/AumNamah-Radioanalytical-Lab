@@ -8,8 +8,34 @@ window.blogStore = {
             }
             return blogs;
         } catch (e) {
-            console.error('Error fetching blogs:', e);
-            return [];
+            console.error('Error fetching blogs, using fallback data:', e);
+            // Fallback data when PHP/MySQL backend is unavailable
+            return [
+                {
+                    id: 'post_1',
+                    date: new Date().toISOString(),
+                    featureImage: 'assets/images/about_us_lab.png',
+                    title: 'The Importance of NABL Accreditation in Radioanalytical Testing',
+                    excerpt: 'Discover why choosing an accredited laboratory guarantees clinical precision and reliability for your samples.',
+                    status: 'published'
+                },
+                {
+                    id: 'post_2',
+                    date: new Date(Date.now() - 86400000 * 5).toISOString(),
+                    featureImage: 'assets/images/home_hero.png',
+                    title: 'Understanding Gamma Spectrometry',
+                    excerpt: 'A deep dive into how we measure radiation levels in water and food samples using state-of-the-art detectors.',
+                    status: 'published'
+                },
+                {
+                    id: 'post_3',
+                    date: new Date(Date.now() - 86400000 * 12).toISOString(),
+                    featureImage: 'assets/images/quality.png',
+                    title: 'New Guidelines for Environmental Testing',
+                    excerpt: 'Recent updates in environmental monitoring regulations and how AumNamah Laboratory helps you stay compliant.',
+                    status: 'published'
+                }
+            ];
         }
     },
 
