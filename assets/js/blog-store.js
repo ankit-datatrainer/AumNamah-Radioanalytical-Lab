@@ -22,7 +22,7 @@ window.blogStore = {
                 {
                     id: 'post_2',
                     date: new Date(Date.now() - 86400000 * 5).toISOString(),
-                    featureImage: 'assets/images/home_hero.png',
+                    featureImage: 'assets/images/radiation_detection_tech.png',
                     title: 'Understanding Gamma Spectrometry',
                     excerpt: 'A deep dive into how we measure radiation levels in water and food samples using state-of-the-art detectors.',
                     status: 'published'
@@ -30,7 +30,7 @@ window.blogStore = {
                 {
                     id: 'post_3',
                     date: new Date(Date.now() - 86400000 * 12).toISOString(),
-                    featureImage: 'assets/images/quality.png',
+                    featureImage: 'assets/images/environmental_testing.png',
                     title: 'New Guidelines for Environmental Testing',
                     excerpt: 'Recent updates in environmental monitoring regulations and how AumNamah Laboratory helps you stay compliant.',
                     status: 'published'
