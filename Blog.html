@@ -227,7 +227,7 @@
             
             const card = document.createElement('article');
             card.className = 'blog-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col cursor-pointer group';
-            card.onclick = () => window.location.href = `Blog-Post.html?id=${blog.id}`;
+            card.onclick = () => window.location.href = `Blog-Post.html?slug=${blog.id}`;
             
             card.innerHTML = `
                 <div class="h-64 overflow-hidden relative">

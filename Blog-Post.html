@@ -272,7 +272,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const blogId = urlParams.get('id');
+        const blogId = urlParams.get('slug') || urlParams.get('id');
 
         const loadingState = document.getElementById('loadingState');
         const errorState = document.getElementById('errorState');
