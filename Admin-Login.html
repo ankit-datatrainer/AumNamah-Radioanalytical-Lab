@@ -30,9 +30,17 @@
         .font-headline { font-family: 'Manrope', sans-serif; }
     </style>
     <script>
-        if (sessionStorage.getItem('admin_token') === 'valid') {
-            window.location.href = 'Admin-Dashboard.html';
-        }
+        // Skip the form if the server says this browser is already signed in
+        fetch('api/login.php', { credentials: 'same-origin' })
+            .then(r => r.json())
+            .then(d => {
+                if (d.loggedIn) {
+                    sessionStorage.setItem('admin_token', 'valid');
+                    sessionStorage.setItem('admin_email', d.email);
+                    window.location.href = 'Admin-Dashboard.html';
+                }
+            })
+            .catch(() => {});
     </script>
 </head>
 <body class="bg-laboratory-white min-h-screen flex items-center justify-center p-4">
@@ -91,20 +99,13 @@
             const errorMsg = document.getElementById('errorMsg');
             const submitBtn = this.querySelector('button[type="submit"]');
 
-            // Hardcoded fallback credentials for testing/demonstration since DB is offline
-            if (email === 'info@aumnamahral.com' && password === 'Aumnamahral@2026') {
-                sessionStorage.setItem('admin_token', 'valid');
-                sessionStorage.setItem('admin_email', email);
-                window.location.href = 'Admin-Dashboard.html';
-                return;
-            }
-
             try {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = 'Signing In... <span class="material-symbols-outlined text-sm animate-spin">refresh</span>';
 
                 const response = await fetch('api/login.php', {
                     method: 'POST',
+                    credentials: 'same-origin',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
                 });
@@ -121,8 +122,7 @@
                     setTimeout(() => errorMsg.classList.add('hidden'), 3000);
                 }
             } catch (err) {
-                // If the PHP backend is offline, and it wasn't the master credentials, show error
-                errorMsg.textContent = 'Invalid credentials or database offline.';
+                errorMsg.textContent = 'Could not reach the server. Please try again.';
                 errorMsg.classList.remove('hidden');
                 setTimeout(() => errorMsg.classList.add('hidden'), 3000);
             } finally {

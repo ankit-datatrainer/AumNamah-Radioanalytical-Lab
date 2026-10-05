@@ -1,15 +1,13 @@
 <?php
 header('Content-Type: application/json');
+require 'auth.php';
+require_admin();
 require 'db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'GET') {
-    $email = $_GET['email'] ?? '';
-    if (empty($email)) {
-        echo json_encode(['status' => 'error', 'message' => 'Email required']);
-        exit;
-    }
+    $email = $_SESSION['admin_email'];
     
     $stmt = $pdo->prepare("SELECT display_name, email FROM admins WHERE email = ?");
     $stmt->execute([$email]);
@@ -23,7 +21,8 @@ if ($method === 'GET') {
 } elseif ($method === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     
-    $currentEmail = $data['currentEmail'] ?? '';
+    // Only the signed-in admin's own account can be changed
+    $currentEmail = $_SESSION['admin_email'];
     $newEmail = $data['newEmail'] ?? '';
     $displayName = $data['displayName'] ?? '';
     $oldPassword = $data['oldPassword'] ?? '';
@@ -65,6 +64,7 @@ if ($method === 'GET') {
             $update = $pdo->prepare("UPDATE admins SET display_name = ?, email = ? WHERE id = ?");
             $update->execute([$displayName, $updateEmail, $admin['id']]);
         }
+        $_SESSION['admin_email'] = $updateEmail;
         echo json_encode(['status' => 'success', 'message' => 'Profile updated successfully', 'email' => $updateEmail]);
     } catch (PDOException $e) {
         echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);

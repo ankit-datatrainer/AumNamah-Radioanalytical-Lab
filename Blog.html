@@ -6,12 +6,12 @@
     <title>Blog - AumNamah Radioanalytical Lab</title>
     <meta name="description" content="Read the latest insights and updates from AumNamah Radioanalytical Laboratory."/>
     
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link href="assets/css/animations.css" rel="stylesheet"/>
-    <link href="assets/css/responsive.css" rel="stylesheet"/>
+    <link href="/assets/css/animations.css" rel="stylesheet"/>
+    <link href="/assets/css/responsive.css" rel="stylesheet"/>
     
     <script id="tailwind-config">
         tailwind.config = {
@@ -53,20 +53,45 @@
 
 <!-- Top Navigation -->
 <header class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-outline-variant/30">
+    <!-- Top Bar -->
+    <div class="bg-cobalt-deep text-white py-2">
+        <div class="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm gap-2 sm:gap-0">
+            <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+                <div class="flex items-center gap-1.5 hover:text-gray-200 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">mail</span>
+                    <a href="mailto:info@aumnamahral.com">info@aumnamahral.com</a>
+                </div>
+                <div class="flex items-center gap-1.5 hover:text-gray-200 transition-colors sm:border-l sm:border-white/20 sm:pl-4">
+                    <span class="material-symbols-outlined text-[16px]">call</span>
+                    <a href="tel:+918920723168">+91 8920723168</a> <span class="hidden md:inline text-white/50 px-1">/</span> <a href="tel:+919717686925" class="hidden md:inline">+91 9717686925</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 sm:gap-6 flex-wrap justify-center sm:justify-end hidden md:flex">
+                <div class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px]">shield</span>
+                    <span>Quality You Can Trust</span>
+                </div>
+                <div class="flex items-center gap-1.5 border-l border-white/20 pl-4 sm:pl-6">
+                    <span class="material-symbols-outlined text-[16px]">health_and_safety</span>
+                    <span>ISO Compliant Lab</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="flex justify-between items-center max-w-[1280px] mx-auto px-8 py-4">
-        <a class="flex items-center gap-3" href="index.html">
-            <img alt="AumNamah Lab Logo" class="h-14 sm:h-16 w-auto object-contain scale-110 origin-left" src="assets/images/logo.png"/>
+        <a class="flex items-center gap-3" href="/index.html">
+            <img alt="AumNamah Lab Logo" class="h-14 sm:h-16 w-auto object-contain scale-110 origin-left" src="/assets/images/logo.png"/>
         </a>
         <nav class="hidden md:flex items-center gap-8">
-            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="index.html">Home</a>
-            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="About-Us.html">About Us</a>
-            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Services.html">Services</a>
-            <a class="font-body-md text-primary font-semibold border-b-2 border-primary pb-1 font-medium" href="Blog.html">Blog</a>
-            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Certifications.html">Certifications</a>
-            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Contact-Us.html">Contact</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="/index.html">Home</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="/About-Us.html">About Us</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="/Services.html">Services</a>
+            <a class="font-body-md text-primary font-semibold border-b-2 border-primary pb-1 font-medium" href="/blog">Blog</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="/Certifications.html">Certifications</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="/Contact-Us.html">Contact</a>
         </nav>
         <div class="flex items-center gap-4">
-            <a href="Contact-Us.html" class="hidden md:flex bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-cobalt-deep transition-colors items-center gap-2">
+            <a href="/Contact-Us.html" class="hidden md:flex bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-cobalt-deep transition-colors items-center gap-2">
                 Request Analysis <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </a>
 
@@ -96,11 +121,11 @@
         </div>
         <div class="p-3">
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3">My Account</p>
-            <a href="Admin-Dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors font-medium">
+            <a href="/Admin-Dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors font-medium">
                 <span class="material-symbols-outlined text-[18px]">dashboard</span> Dashboard
             </a>
             
-            <a href="Admin-Dashboard.html#settings" class="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors font-medium">
+            <a href="/Admin-Dashboard.html#settings" class="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors font-medium">
                 <span class="material-symbols-outlined text-[18px]">settings</span> Settings
             </a>
         </div>
@@ -117,7 +142,7 @@
 </header>
 
 <!-- Main Content -->
-<main class="flex-grow w-full pt-[100px]">
+<main class="flex-grow w-full pt-[116px] md:pt-[130px]">
     
     <section class="max-w-[1280px] mx-auto px-8 py-16">
         <div class="text-center mb-16">
@@ -138,7 +163,7 @@
 <div class="max-w-[1280px] mx-auto px-8">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
 <div class="lg:col-span-3 pr-8">
-<img alt="AumNamah Lab Logo" class="h-16 sm:h-20 w-auto object-contain mb-4 scale-110 origin-left" src="assets/images/logo.png"/>
+<img alt="AumNamah Lab Logo" class="h-16 sm:h-20 w-auto object-contain mb-4 scale-110 origin-left" src="/assets/images/logo.png"/>
 <p class="text-sm text-on-surface-variant mb-6 leading-relaxed">
                         Dedicated to delivering high-quality, affordable and innovative precision testing that improves safety worldwide.
                     </p>
@@ -150,38 +175,38 @@
 <div class="lg:col-span-2">
 <h4 class="font-bold text-cobalt-deep mb-6">Quick Links</h4>
 <ul class="space-y-3 text-sm text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
-<li><a class="hover:text-primary transition-colors" href="About-Us.html">About Us</a></li>
-<li><a class="hover:text-primary transition-colors" href="Services.html">Services</a></li>
-<li><a class="hover:text-primary transition-colors" href="Blog.html">Blog</a></li>
-<li><a class="hover:text-primary transition-colors" href="Certifications.html">Certifications</a></li>
-<li><a class="hover:text-primary transition-colors" href="Contact-Us.html">Contact</a></li>
+<li><a class="hover:text-primary transition-colors" href="/index.html">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="/About-Us.html">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Services.html">Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="/blog">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Certifications.html">Certifications</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Contact-Us.html">Contact</a></li>
 </ul>
 </div>
 <div class="lg:col-span-2">
 <h4 class="font-bold text-cobalt-deep mb-6">Our Services</h4>
 <ul class="space-y-3 text-sm text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="Services.html#food">Food &amp; Agriculture</a></li>
-<li><a class="hover:text-primary transition-colors" href="Services.html#water">Water Samples</a></li>
-<li><a class="hover:text-primary transition-colors" href="Services.html#environment">Environment (NORM)</a></li>
-<li><a class="hover:text-primary transition-colors" href="Services.html#industrial">Industrial Samples</a></li>
-<li><a class="hover:text-primary transition-colors" href="Services.html">Other Tests</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Services.html#food">Food &amp; Agriculture</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Services.html#water">Water Samples</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Services.html#environment">Environment (NORM)</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Services.html#industrial">Industrial Samples</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Services.html">Other Tests</a></li>
 </ul>
 </div>
 <div class="lg:col-span-2">
 <h4 class="font-bold text-cobalt-deep mb-6">Support</h4>
 <ul class="space-y-3 text-sm text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="Privacy-Policy.html">Privacy Policy</a></li>
-<li><a class="hover:text-primary transition-colors" href="Terms-Conditions.html">Terms &amp; Conditions</a></li>
-<li><a class="hover:text-primary transition-colors" href="Certifications.html">Certifications</a></li>
-<li><a class="hover:text-primary transition-colors font-semibold flex items-center gap-2" href="Admin-Login.html"><span class="material-symbols-outlined text-[16px]">admin_panel_settings</span> Admin Login</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Privacy-Policy.html">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Terms-Conditions.html">Terms &amp; Conditions</a></li>
+<li><a class="hover:text-primary transition-colors" href="/Certifications.html">Certifications</a></li>
+<li><a class="hover:text-primary transition-colors font-semibold flex items-center gap-2" href="/Admin-Login.html"><span class="material-symbols-outlined text-[16px]">admin_panel_settings</span> Admin Login</a></li>
 </ul>
 </div>
 <div class="lg:col-span-3">
 <h4 class="font-bold text-cobalt-deep mb-6">Contact Us</h4>
 <address class="not-italic text-sm text-on-surface-variant space-y-4">
 <p>
-<strong>Radioanalytical Lab</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>Keshav Puram, New Delhi-110035
+<strong class="text-[13px] whitespace-nowrap tracking-tight">Aumnamah Radioanalytical Laboratory LLP</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>Keshav Puram, New Delhi-110035
                         </p>
 <p class="flex items-start gap-2">
 <span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0">call</span>
@@ -202,14 +227,14 @@
 <div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
 <p>© 2026 AumNamah Radioanalytical Laboratory. All Rights Reserved.</p>
 <div class="flex gap-6">
-<a class="hover:text-primary transition-colors" href="Privacy-Policy.html">Privacy Policy</a>
-<a class="hover:text-primary transition-colors" href="Terms-Conditions.html">Terms &amp; Conditions</a>
+<a class="hover:text-primary transition-colors" href="/Privacy-Policy.html">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="/Terms-Conditions.html">Terms &amp; Conditions</a>
 </div>
 </div>
 </div>
 </footer>
 
-<script src="assets/js/blog-store.js"></script>
+<script src="/assets/js/blog-store.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', async () => {
         const container = document.getElementById('blogGrid');
@@ -227,11 +252,11 @@
             
             const card = document.createElement('article');
             card.className = 'blog-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col cursor-pointer group';
-            card.onclick = () => window.location.href = `Blog-Post.html?slug=${blog.id}`;
+            card.onclick = () => window.location.href = `/blog/${blog.slug || blog.id}`;
             
             card.innerHTML = `
                 <div class="h-64 overflow-hidden relative">
-                    <img src="${blog.featureImage || 'assets/images/logo.png'}" alt="${blog.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src="${blog.featureImage || '/assets/images/logo.png'}" alt="${blog.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div class="absolute bottom-4 left-6">
                         <span class="bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">${date}</span>

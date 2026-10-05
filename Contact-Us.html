@@ -369,7 +369,7 @@
 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="index.html">Home</a>
 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="About-Us.html">About Us</a>
 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Services.html">Services</a>
-<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Blog.html">Blog</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="/blog">Blog</a>
                     <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 font-medium" href="Certifications.html">Certifications</a>
 <a class="font-body-md text-primary font-semibold border-b-2 border-primary pb-1 font-medium" href="Contact-Us.html">Contact</a>
 </nav>
@@ -440,8 +440,8 @@
                     Schedule an appointment, request analysis, or inquire about our comprehensive radioanalytical services. Our team of specialists is ready to assist you with precision and care.
                 </p>
                 <div class="mt-8 flex justify-center animate-" data-anim="fade-up" style="transition-delay: 100ms;">
-                    <a class="inline-flex items-center gap-2 bg-cobalt-deep text-white px-8 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:bg-primary transition-all duration-300 transform hover:-translate-y-1" download="Service Request Form (SRF).pdf" href="assets/Service Request Form (SRF).pdf">
-                        <span class="material-symbols-outlined">download</span> Download Test Request
+                    <a class="inline-flex items-center gap-2 bg-cobalt-deep text-white px-8 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:bg-primary transition-all duration-300 transform hover:-translate-y-1" download="Service Request Form (SRF).pdf" href="assets/Service%20Request%20Form%20(SRF).pdf">
+                        <span class="material-symbols-outlined">download</span> Download Test Request Form
                     </a>
                 </div>
 </div>
@@ -525,13 +525,7 @@
 <h2 class="font-headline-md text-headline-md text-cobalt-deep mb-2">Book an Appointment</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Fill out the details below to schedule a consultation or drop-off.</p>
 </div>
-<form id="contactForm" action="https://formsubmit.co/info@aumnamahral.com" method="POST" class="space-y-6">
-<!-- FormSubmit Configuration (hidden) -->
-<input type="hidden" name="_subject" value="New Analysis Request — AumNamah RAL Website">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="">
-<input type="text" name="_honey" style="display:none">
+<form id="contactForm" action="/api/contact.php" method="POST" class="space-y-6">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="relative group">
 <label class="flex items-center gap-2 text-xs font-bold text-cobalt-deep mb-2 uppercase tracking-wide" for="name">
@@ -562,7 +556,6 @@
 <option value="Soil and Coal Analysis">Soil and Coal Analysis</option>
 <option value="Environment Sample Analysis">Environment Sample Analysis</option>
 <option value="Water Analysis">Water Analysis</option>
-<option value="Pharmaceutical Validation">Pharmaceutical Validation</option>
 <option value="Building Material Radiological Testing">Building Material Radiological Testing</option>
 <option value="Uranium Content Analysis in Water">Uranium Content Analysis in Water</option>
 </select>
@@ -596,10 +589,6 @@
     var btnText = document.getElementById('submitBtnText');
     var btnIcon = document.getElementById('submitBtnIcon');
 
-    // Set _next to current page so user comes back here after FormSubmit redirect
-    var nextField = form.querySelector('input[name="_next"]');
-    if (nextField) nextField.value = window.location.href;
-
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -612,17 +601,17 @@
 
         var formData = new FormData(form);
 
-        fetch(form.action, {
+        fetch('/api/contact.php', {
             method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
+            body: formData
         })
-        .then(function(response) {
-            if (response.ok) {
-                showToast('success', 'Request submitted successfully! We will contact you shortly.');
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (data.status === 'success') {
+                showToast('success', data.message || 'Request submitted successfully! We will contact you shortly.');
                 form.reset();
             } else {
-                showToast('error', 'Something went wrong. Please try again or email us directly.');
+                showToast('error', data.message || 'Something went wrong. Please try again or email us directly.');
             }
         })
         .catch(function() {
@@ -689,7 +678,7 @@
 <li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
 <li><a class="hover:text-primary transition-colors" href="About-Us.html">About Us</a></li>
 <li><a class="hover:text-primary transition-colors" href="Services.html">Services</a></li>
-<li><a class="hover:text-primary transition-colors" href="Blog.html">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="/blog">Blog</a></li>
 <li><a class="hover:text-primary transition-colors" href="Certifications.html">Certifications</a></li>
 <li><a class="hover:text-primary transition-colors" href="Contact-Us.html">Contact</a></li>
 </ul>
@@ -717,7 +706,7 @@
 <h4 class="font-bold text-cobalt-deep mb-6">Contact Us</h4>
 <address class="not-italic text-sm text-on-surface-variant space-y-4">
 <p>
-<strong>Radioanalytical Lab</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>Keshav Puram, New Delhi-110035
+<strong class="text-[13px] whitespace-nowrap tracking-tight">Aumnamah Radioanalytical Laboratory LLP</strong><br/>CC-1, First Floor, Community Centre, Lawrence Road Industrial Area,<br/>Keshav Puram, New Delhi-110035
                         </p>
 <p class="flex items-start gap-2">
 <span class="material-symbols-outlined text-[16px] mt-0.5 shrink-0">call</span>

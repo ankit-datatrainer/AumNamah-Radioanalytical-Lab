@@ -9,6 +9,16 @@
         if (sessionStorage.getItem('admin_token') !== 'valid') {
             window.location.href = 'Admin-Login.html';
         }
+        // The real check: the server session. If it has expired, go back to login.
+        fetch('api/login.php', { credentials: 'same-origin' })
+            .then(r => r.json())
+            .then(d => {
+                if (!d.loggedIn) {
+                    sessionStorage.removeItem('admin_token');
+                    window.location.href = 'Admin-Login.html';
+                }
+            })
+            .catch(() => {});
     </script>
     
     <link rel="shortcut icon" href="favicon.ico" />
@@ -184,6 +194,45 @@
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Content</label>
                                 <div id="editor-container" class="rounded-b-lg border-gray-300 bg-white"></div>
+                            </div>
+
+                            <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 space-y-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-[20px]">travel_explore</span>
+                                    <h3 class="text-sm font-bold text-cobalt-deep">SEO Settings</h3>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1.5 text-gray-600">URL Slug</label>
+                                    <div class="flex items-center gap-1 text-xs text-gray-400 mb-1 truncate">Blog-Post.html?slug=<span id="slugPreview" class="text-primary font-medium">your-post-title</span></div>
+                                    <input type="text" id="postSlug" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="auto-generated-from-title">
+                                    <p class="text-[11px] text-gray-400 mt-1">Leave blank to auto-generate from the title. Lowercase, hyphens only.</p>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1.5 text-gray-600">Meta Title <span class="font-normal text-gray-400" id="metaTitleCount">(0/60)</span></label>
+                                    <input type="text" id="postMetaTitle" maxlength="70" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Defaults to the Post Title if left blank">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1.5 text-gray-600">Meta Description <span class="font-normal text-gray-400" id="metaDescCount">(0/160)</span></label>
+                                    <textarea id="postMetaDescription" rows="3" maxlength="320" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Defaults to the Short Excerpt if left blank"></textarea>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1.5 text-gray-600">Focus Keywords</label>
+                                    <input type="text" id="postMetaKeywords" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="e.g. NABL lab delhi, water testing, radiation testing">
+                                    <p class="text-[11px] text-gray-400 mt-1">Comma-separated keywords this post targets.</p>
+                                </div>
+
+                                <div class="border-t border-gray-200 pt-3">
+                                    <p class="text-[11px] font-semibold text-gray-500 mb-1.5">Google Search Preview</p>
+                                    <div class="bg-white border border-gray-200 rounded-lg p-3">
+                                        <div class="text-[13px] text-[#1a0dab] truncate" id="serpTitle">Post Title Here</div>
+                                        <div class="text-[12px] text-green-700 truncate">www.aumnamahral.com/Blog-Post.html?slug=<span id="serpSlug">your-post-title</span></div>
+                                        <div class="text-[12px] text-gray-600 line-clamp-2" id="serpDesc">Your meta description will appear here...</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -370,6 +419,38 @@
             }
         });
 
+        function slugify(text) {
+            return (text || '').toString().toLowerCase().trim()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        function updateSeoPreview() {
+            const title = document.getElementById('postTitle').value.trim();
+            const metaTitle = document.getElementById('postMetaTitle').value.trim();
+            const excerpt = document.getElementById('postExcerpt').value.trim();
+            const metaDesc = document.getElementById('postMetaDescription').value.trim();
+            const slugInput = document.getElementById('postSlug').value.trim();
+            const slug = slugify(slugInput || title) || 'your-post-title';
+
+            document.getElementById('slugPreview').textContent = slug;
+            document.getElementById('serpSlug').textContent = slug;
+            document.getElementById('serpTitle').textContent = metaTitle || title || 'Post Title Here';
+            document.getElementById('serpDesc').textContent = metaDesc || excerpt || 'Your meta description will appear here...';
+
+            const metaTitleLen = (metaTitle || title).length;
+            document.getElementById('metaTitleCount').textContent = `(${metaTitleLen}/60)`;
+            document.getElementById('metaTitleCount').className = metaTitleLen > 60 ? 'font-normal text-red-500' : 'font-normal text-gray-400';
+
+            const metaDescLen = (metaDesc || excerpt).length;
+            document.getElementById('metaDescCount').textContent = `(${metaDescLen}/160)`;
+            document.getElementById('metaDescCount').className = metaDescLen > 160 ? 'font-normal text-red-500' : 'font-normal text-gray-400';
+        }
+
+        ['postTitle', 'postExcerpt', 'postSlug', 'postMetaTitle', 'postMetaDescription'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateSeoPreview);
+        });
+
         function clearFeatureImage() {
             document.getElementById('postFeatureImg').value = '';
             document.getElementById('postFeatureImgData').value = '';
@@ -402,6 +483,7 @@
                     <td class="p-4">
                         <div class="font-semibold text-gray-900">${blog.title}</div>
                         <div class="text-xs text-gray-500 truncate max-w-[300px] mt-1">${blog.excerpt || 'No excerpt'}</div>
+                        <div class="text-[11px] text-primary/70 truncate max-w-[300px] mt-0.5">/${blog.slug || blog.id}</div>
                     </td>
                     <td class="p-4">${statusBadge}</td>
                     <td class="p-4 text-sm text-gray-600">${dateStr}</td>
@@ -440,6 +522,10 @@
             document.getElementById('postId').value = '';
             document.getElementById('postTitle').value = '';
             document.getElementById('postExcerpt').value = '';
+            document.getElementById('postSlug').value = '';
+            document.getElementById('postMetaTitle').value = '';
+            document.getElementById('postMetaDescription').value = '';
+            document.getElementById('postMetaKeywords').value = '';
             quill.root.innerHTML = '';
             document.getElementById('postStatus').value = 'published';
             clearFeatureImage();
@@ -453,9 +539,13 @@
                     document.getElementById('postId').value = blog.id;
                     document.getElementById('postTitle').value = blog.title;
                     document.getElementById('postExcerpt').value = blog.excerpt || '';
+                    document.getElementById('postSlug').value = blog.slug || '';
+                    document.getElementById('postMetaTitle').value = blog.metaTitle || '';
+                    document.getElementById('postMetaDescription').value = blog.metaDescription || '';
+                    document.getElementById('postMetaKeywords').value = blog.metaKeywords || '';
                     quill.root.innerHTML = blog.content || '';
                     document.getElementById('postStatus').value = blog.status;
-                    
+
                     if (blog.featureImage) {
                         document.getElementById('postFeatureImgData').value = blog.featureImage;
                         document.getElementById('featureImagePreview').style.backgroundImage = `url(${blog.featureImage})`;
@@ -463,6 +553,7 @@
                     }
                 }
             }
+            updateSeoPreview();
         }
 
         function editPost(id) {
@@ -479,7 +570,11 @@
                 excerpt: document.getElementById('postExcerpt').value.trim(),
                 content: quill.root.innerHTML,
                 status: document.getElementById('postStatus').value,
-                featureImage: document.getElementById('postFeatureImgData').value || null
+                featureImage: document.getElementById('postFeatureImgData').value || null,
+                slug: document.getElementById('postSlug').value.trim(),
+                metaTitle: document.getElementById('postMetaTitle').value.trim(),
+                metaDescription: document.getElementById('postMetaDescription').value.trim(),
+                metaKeywords: document.getElementById('postMetaKeywords').value.trim()
             };
 
             await window.blogStore.saveBlog(blogData);
@@ -494,8 +589,12 @@
             }
         }
 
-        function logout() {
+        async function logout() {
+            try {
+                await fetch('api/login.php', { method: 'DELETE', credentials: 'same-origin' });
+            } catch (e) {}
             sessionStorage.removeItem('admin_token');
+            sessionStorage.removeItem('admin_email');
             window.location.href = 'Admin-Login.html';
         }
     
@@ -503,7 +602,7 @@
             const email = sessionStorage.getItem('admin_email');
             if (!email) return;
             try {
-                const res = await fetch(`api/settings.php?email=${encodeURIComponent(email)}`);
+                const res = await fetch('api/settings.php');
                 const data = await res.json();
                 if (data.status === 'success' && data.data) {
                     const profile = data.data;

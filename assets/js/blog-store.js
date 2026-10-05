@@ -1,7 +1,17 @@
+// Admin write calls need a server session; if it has expired, send the admin back to sign in.
+function handleAdminAuth(response) {
+    if (response.status === 401) {
+        sessionStorage.removeItem('admin_token');
+        alert('Your admin session has expired. Please sign in again.');
+        window.location.href = '/Admin-Login.html';
+    }
+    return response;
+}
+
 window.blogStore = {
     async getAllBlogs(includeDrafts = false) {
         try {
-            const response = await fetch('api/blogs.php');
+            const response = await fetch('/api/blogs.php');
             let blogs = await response.json();
             if (!includeDrafts) {
                 blogs = blogs.filter(b => b.status === 'published');
@@ -44,7 +54,7 @@ window.blogStore = {
 
     async getBlogById(id) {
         try {
-            const response = await fetch(`api/blogs.php?id=${id}`);
+            const response = await fetch(`/api/blogs.php?id=${id}`);
             if (response.ok) {
                 return await response.json();
             }
@@ -59,11 +69,12 @@ window.blogStore = {
     async saveBlog(blogData) {
         try {
             const method = blogData.id ? 'PUT' : 'POST';
-            const response = await fetch('api/blogs.php', {
+            const response = await fetch('/api/blogs.php', {
                 method: method,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(blogData)
             });
+            handleAdminAuth(response);
             return await response.json();
         } catch (e) {
             console.error('Error saving blog:', e);
@@ -73,11 +84,12 @@ window.blogStore = {
 
     async deleteBlog(id) {
         try {
-            const response = await fetch('api/blogs.php', {
+            const response = await fetch('/api/blogs.php', {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id })
             });
+            handleAdminAuth(response);
             return await response.json();
         } catch (e) {
             console.error('Error deleting blog:', e);
@@ -89,10 +101,11 @@ window.blogStore = {
         const formData = new FormData();
         formData.append('image', file);
         try {
-            const response = await fetch('api/upload.php', {
+            const response = await fetch('/api/upload.php', {
                 method: 'POST',
                 body: formData
             });
+            handleAdminAuth(response);
             return await response.json();
         } catch (e) {
             console.error('Error uploading image:', e);

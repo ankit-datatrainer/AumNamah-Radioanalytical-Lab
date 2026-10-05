@@ -1,0 +1,6 @@
+# Never commit database dumps, backups or secrets (repo is public)
+*.sql
+*.zip
+database/
+api/contact.php
+security-fix-console-check.png

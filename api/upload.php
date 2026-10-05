@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+require 'auth.php';
 
 // Only allow POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -7,6 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['error' => 'Method not allowed']);
     exit;
 }
+
+// Only a signed-in admin may upload
+require_admin();
 
 // Check if file was uploaded without errors
 if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
@@ -16,14 +20,26 @@ if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
 }
 
 $file = $_FILES['image'];
-$fileName = basename($file['name']);
 $fileTmpName = $file['tmp_name'];
 $fileSize = $file['size'];
-$fileType = mime_content_type($fileTmpName);
 
-// Validate file type
-$allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-if (!in_array($fileType, $allowedTypes)) {
+if ($fileSize > 5 * 1024 * 1024) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Image must be 5 MB or smaller.']);
+    exit;
+}
+
+// Validate the real content, not the client-supplied name. The saved extension
+// comes from the detected type, so "shell.php" or "page.html" can never be stored.
+$allowedTypes = [
+    'image/jpeg' => 'jpg',
+    'image/png'  => 'png',
+    'image/gif'  => 'gif',
+    'image/webp' => 'webp',
+];
+$fileType = mime_content_type($fileTmpName);
+$imageInfo = @getimagesize($fileTmpName);
+if (!isset($allowedTypes[$fileType]) || $imageInfo === false || ($imageInfo['mime'] ?? '') !== $fileType) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid file type. Only JPG, PNG, GIF, and WEBP are allowed.']);
     exit;
@@ -35,8 +51,10 @@ if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
 }
 
-// Create a unique filename to prevent overwriting
-$uniqueName = uniqid() . '_' . preg_replace("/[^a-zA-Z0-9.]/", "", $fileName);
+// Keep a readable base name, but force the extension from the detected type
+$baseName = pathinfo(basename($file['name']), PATHINFO_FILENAME);
+$baseName = substr(preg_replace('/[^a-zA-Z0-9_-]/', '', $baseName), 0, 60) ?: 'image';
+$uniqueName = uniqid() . '_' . $baseName . '.' . $allowedTypes[$fileType];
 $destination = $uploadDir . $uniqueName;
 
 // Move the file

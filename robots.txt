@@ -8,6 +8,8 @@ Allow: /
 Disallow: /404.html
 Disallow: /assets/Certificate*
 Disallow: /_*
+Disallow: /Admin-Login.html
+Disallow: /Admin-Dashboard.html
 
 # Crawl politeness
 Crawl-delay: 1

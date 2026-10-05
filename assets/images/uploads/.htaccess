@@ -1,0 +1,19 @@
+# Uploaded files are images only: never execute or render anything else here.
+Options -Indexes -ExecCGI
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .pl .py .cgi .shtml
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phar
+<FilesMatch "(?i)\.(jpe?g|png|gif|webp)$">
+    Require all granted
+</FilesMatch>
+<FilesMatch "(?i)^(?!.*\.(jpe?g|png|gif|webp)$).+$">
+    Require all denied
+</FilesMatch>
