@@ -70,13 +70,15 @@ try {
     // Seed default admin if table is empty
     $stmt = $pdo->query("SELECT COUNT(*) FROM admins");
     if ($stmt->fetchColumn() == 0) {
-        $default_name = 'System Admin';
-        $default_email = 'info@aumnamahral.com';
-        $default_password = 'Aumnamahral@2026';
-        $hash = password_hash($default_password, PASSWORD_DEFAULT);
-        
-        $insert = $pdo->prepare("INSERT INTO admins (display_name, email, password_hash) VALUES (?, ?, ?)");
-        $insert->execute([$default_name, $default_email, $hash]);
+        // The seed hash lives in api/admin_seed.php, which is git-ignored (this repo is
+        // public). Never put a plain password in this file.
+        $seed = is_file(__DIR__ . '/admin_seed.php') ? require __DIR__ . '/admin_seed.php' : null;
+        if (!empty($seed['email']) && !empty($seed['password_hash'])) {
+            $insert = $pdo->prepare("INSERT INTO admins (display_name, email, password_hash) VALUES (?, ?, ?)");
+            $insert->execute([$seed['display_name'] ?? 'Super Admin', $seed['email'], $seed['password_hash']]);
+        } else {
+            echo "No admin seeded: create api/admin_seed.php first. ";
+        }
     }
 
     echo "Database and tables initialized successfully. Readable slugs generated for {$fixed} post(s).";

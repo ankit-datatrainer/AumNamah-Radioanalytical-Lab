@@ -4,3 +4,5 @@
 database/
 api/contact.php
 security-fix-console-check.png
+api/admin_seed.php
+update_admin_live.sql
